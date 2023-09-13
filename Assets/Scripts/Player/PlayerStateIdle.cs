@@ -11,8 +11,15 @@ public class PlayerStateIdle : PlayerStateBase
         ManageRotation();
     }
 
+    public override void FixedUpdate()
+    {
+        
+    }
+
     public override void Start()
     {
+        PlayerController.Instance.Rigidbody.velocity = Vector3.zero;
+        PlayerController.Instance.CheckForMovementInput();
     }
 
     public override void End()

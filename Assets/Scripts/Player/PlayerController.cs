@@ -1,6 +1,7 @@
 ﻿using System;
 using Cinemachine;
 using Data.PlayerDataScriptable;
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [field:SerializeField] public GameObject Character { get; private set; }
     [field:SerializeField] public Animator Animator { get; private set; }
     [field:SerializeField] public PlayerData Data { get; private set; }
+    [field:SerializeField] public CinemachineFreeLook FreeLookCamera { get; private set; }
     public Vector2 MoveInput { get; private set; }
     
     private PlayerStateBase _currentPlayerState;
@@ -41,6 +43,8 @@ public class PlayerController : MonoBehaviour
     {
         _characterInputAction = new CharacterInput();
         _characterInputAction.Enable();
+
+        Rigidbody.interpolation = RigidbodyInterpolation.Extrapolate;
     }
 
     private void Update()
@@ -48,11 +52,21 @@ public class PlayerController : MonoBehaviour
         UpdateCurrentState();
     }
 
+    private void FixedUpdate()
+    {
+        FixedUpdateCurrentState();
+    }
+
     #region StateControl
 
     private void UpdateCurrentState()
     {
         _currentPlayerState.Update();
+    }
+
+    private void FixedUpdateCurrentState()
+    {
+        _currentPlayerState.FixedUpdate();
     }
 
     public void SetPlayerState(PlayerState state)
@@ -77,6 +91,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case PlayerState.Death:
                 _currentPlayerState = new PlayerStateDeath();
+                break;
+            case PlayerState.Jump:
+                _currentPlayerState = new PlayerStateJump();
                 break;
         }
         
@@ -104,14 +121,13 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = _characterInputAction.Controls.Movement.ReadValue<Vector2>();
         if (movement.magnitude != 0)
         {
-            
+            SetPlayerState(PlayerState.Walk);
         }
     }
     
     public void SetMovement(InputAction.CallbackContext context)
     {
         MoveInput = context.ReadValue<Vector2>();
-        Debug.Log(MoveInput);
 
         if (MoveInput.magnitude == 0 
             && _currentPlayerState.State == PlayerState.Walk
@@ -128,6 +144,16 @@ public class PlayerController : MonoBehaviour
         }
         
         SetPlayerState(PlayerState.Walk);
+    }
+
+    public void SetJump(InputAction.CallbackContext context)
+    {
+        if (_currentPlayerState.CanBeEnded == false)
+        {
+            return;
+        }
+        
+        SetPlayerState(PlayerState.Jump);
     }
 
     #endregion

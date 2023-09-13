@@ -3,7 +3,8 @@
     Idle = 0,
     Walk = 1,
     Attack = 2,
-    Death = 3
+    Death = 3,
+    Jump = 4
 }
 
 public abstract class PlayerStateBase
@@ -12,6 +13,7 @@ public abstract class PlayerStateBase
     public abstract bool CanBeEnded { get; set; }
     
     public abstract void Update();
+    public abstract void FixedUpdate();
 
     public abstract void Start();
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerStateWalk : PlayerStateBase
@@ -11,8 +12,13 @@ public class PlayerStateWalk : PlayerStateBase
     
     public override void Update()
     {
-        ManageMovement();
+        ManageAnimationMovement();
         ManageRotation();
+    }
+
+    public override void FixedUpdate()
+    {
+        ManageMovement();
     }
 
     public override void Start()
@@ -24,8 +30,8 @@ public class PlayerStateWalk : PlayerStateBase
     {
         PlayerController.Instance.Animator.SetBool("Walk",false);
     }
-    
-    private void ManageMovement()
+
+    private Vector3 GetMoveDirection()
     {
         Vector3 cameraForward = PlayerController.Instance.Camera.transform.forward;
         cameraForward.y = 0f;
@@ -33,8 +39,13 @@ public class PlayerStateWalk : PlayerStateBase
 
         float horizontalInput = PlayerController.Instance.MoveInput.x;
         float verticalInput = PlayerController.Instance.MoveInput.y;
-
-        Vector3 moveDirection = cameraForward * verticalInput + PlayerController.Instance.Camera.transform.right * horizontalInput;
+        
+        return cameraForward * verticalInput + PlayerController.Instance.Camera.transform.right * horizontalInput;
+    }
+    
+    private void ManageMovement()
+    {
+        Vector3 moveDirection = GetMoveDirection();
 
         if (moveDirection.magnitude > 1)
         {
@@ -43,9 +54,18 @@ public class PlayerStateWalk : PlayerStateBase
 
         Rigidbody rb = PlayerController.Instance.Rigidbody;
         float speed = PlayerController.Instance.Data.WalkSpeed;
-        rb.velocity = (moveDirection * (speed * Time.deltaTime));
+        rb.velocity = moveDirection * speed;
+    }
+    
+    private void ManageAnimationMovement()
+    {
+        Vector3 cameraForward = PlayerController.Instance.Camera.transform.forward;
+        cameraForward.y = 0f;
+        cameraForward.Normalize();
+
+        float horizontalInput = PlayerController.Instance.MoveInput.x;
+        float verticalInput = PlayerController.Instance.MoveInput.y;
         
-        //anim
         Animator animator = PlayerController.Instance.Animator;
         WalkDirection direction = WalkDirection.None;
         if (verticalInput != 0)
@@ -88,7 +108,19 @@ public class PlayerStateWalk : PlayerStateBase
         if (cameraForward != Vector3.zero)
         {
             Quaternion newRotation = Quaternion.LookRotation(cameraForward);
-            PlayerController.Instance.Character.transform.rotation = newRotation;
+            PlayerController.Instance.Character.transform.DOKill();
+            PlayerController.Instance.Character.transform.DORotateQuaternion(newRotation, 0.2f);
+        }
+        
+        float horizontalInput = PlayerController.Instance.MoveInput.x;
+        float verticalInput = PlayerController.Instance.MoveInput.y;
+        if (verticalInput != 0 && horizontalInput != 0)
+        {
+            Quaternion rotation = PlayerController.Instance.Character.transform.rotation;
+            Vector3 euler = rotation.eulerAngles;
+            float diff = horizontalInput > 0 ? 60 : -60;
+            Quaternion newRotation = Quaternion.Euler(euler.x,euler.y + diff,euler.z);
+            PlayerController.Instance.Character.transform.DORotateQuaternion(newRotation, 0.2f);
         }
     }
 }

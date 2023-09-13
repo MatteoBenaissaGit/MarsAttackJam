@@ -6,7 +6,13 @@ namespace Data.PlayerDataScriptable
     public class PlayerData : ScriptableObject
     {
         public int Life;
-        [Range(200,1000)] public float WalkSpeed;
+        public float WalkSpeed;
         [Range(20,200)] public float AngleToResetRotationInIdle;
+        public float AttackTime;
+        public float CameraYSpeed;
+        public float CameraXSpeed;
+        public float JumpForce;
+        public float GravityAfterApexJump;
+        public float VelocityReductionWhenJumpMultiplier;
     }
 }

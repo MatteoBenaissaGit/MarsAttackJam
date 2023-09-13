@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: Data
   m_EditorClassIdentifier: 
   Life: 100
-  WalkSpeed: 570
+  WalkSpeed: 7.5
   AngleToResetRotationInIdle: 72.8
+  AttackTime: 0.5
+  CameraYSpeed: 2
+  CameraXSpeed: 300
+  JumpForce: 300
+  GravityAfterApexJump: 5
+  VelocityReductionWhenJumpMultiplier: 0.5
