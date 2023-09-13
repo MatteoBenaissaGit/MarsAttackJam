@@ -9,6 +9,7 @@
 public abstract class PlayerStateBase
 {
     public abstract PlayerState State { get; set; }
+    public abstract bool CanBeEnded { get; set; }
     
     public abstract void Update();
 
