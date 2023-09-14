@@ -1,4 +1,7 @@
-﻿public enum AIState
+﻿using UnityEngine;
+using UnityEngine.AI;
+
+public enum AIState
 {
     Idle = 0,
     Walk = 1,
@@ -12,7 +15,7 @@ public abstract class AIStateBase
     public abstract AIController Controller { get; set; }
     
     public abstract AIState State { get; set; }
-    
+
     public abstract void Update();
 
     public abstract void Start();

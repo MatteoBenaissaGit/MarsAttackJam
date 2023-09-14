@@ -15,11 +15,17 @@
 
     public override void Start()
     {
-        
+        if (Controller.ChildAnimator != null)
+        {
+            Controller.ChildAnimator.SetBool("attackAI", true);
+        }
     }
 
     public override void End()
     {
-        
+        if (Controller.ChildAnimator != null)
+        {
+            Controller.ChildAnimator.SetBool("attackAI", false);
+        }
     }
 }

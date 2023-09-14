@@ -11,6 +11,8 @@ public class AIController : MonoBehaviour
     [field:SerializeField] public EnemyLifeController LifeController { get; private set; }
     [field:SerializeField] public EnemyData Data { get; private set; }
     [field:SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
+    
+    public Camera cam;
 
     private AIStateBase _currentAIState;
     
@@ -18,6 +20,9 @@ public class AIController : MonoBehaviour
     {
         ChildAnimator = transform.GetChild(0).GetComponent<Animator>();
         _currentAIState = new AIStateIdle(this);
+
+        NavMeshAgent = GetComponent<NavMeshAgent>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
     
     private void Start()
@@ -30,6 +35,23 @@ public class AIController : MonoBehaviour
     private void Update()
     {
         UpdateCurrentState();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                SetAIState(AIState.Walk);
+                NavMeshAgent.SetDestination(hit.point);
+            }
+        }
+
+        if(NavMeshAgent.acceleration == 0)
+        {
+            SetAIState(AIState.Idle);
+        }
     }
 
     #region StateControl

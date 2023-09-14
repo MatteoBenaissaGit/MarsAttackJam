@@ -12,15 +12,23 @@
     public override void Update()
     {
         //TODO setup le navmeshagent (Controller.NavMeshAgent) pour se diriger vers le joueur
+
+        //Controller.NavMeshAgent.SetDestination(transform.position);
     }
 
     public override void Start()
     {
-        
+        if (Controller.ChildAnimator != null)
+        {
+            Controller.ChildAnimator.SetBool("walkAI", true);
+        }
     }
 
     public override void End()
     {
-        
+        if (Controller.ChildAnimator != null)
+        {
+            Controller.ChildAnimator.SetBool("walkAI", false);
+        }
     }
 }

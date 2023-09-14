@@ -1,4 +1,6 @@
-﻿namespace AI
+﻿using UnityEngine;
+
+namespace AI
 {
     public class AIStateIdle : AIStateBase
     {
@@ -12,14 +14,23 @@
     
         public override void Update()
         {
-        
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Controller.cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    Controller.NavMeshAgent.SetDestination(hit.point);
+                }
+            }
         }
 
         public override void Start()
         {
             if (Controller.ChildAnimator != null)
             {
-                Controller.ChildAnimator.SetBool("idle", true);
+                Controller.ChildAnimator.SetBool("idleAI", true);
             }
         }
 
@@ -27,7 +38,7 @@
         {
             if (Controller.ChildAnimator != null)
             {
-                Controller.ChildAnimator.SetBool("idle", false);
+                Controller.ChildAnimator.SetBool("idleAI", false);
             }
         }
     }
