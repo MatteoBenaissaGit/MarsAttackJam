@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EnemyRenderer>k__BackingField: {fileID: 0}
+  <EnemyTransform>k__BackingField: {fileID: 6859568717669468416}
   <EnemyAnimator>k__BackingField: {fileID: 0}
   <LifeController>k__BackingField: {fileID: 1634566958908528802}
   <Data>k__BackingField: {fileID: 11400000, guid: b380423140d0fd94ea5c2497c563a358, type: 2}
@@ -439,3 +440,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   <Rigidbody>k__BackingField: {fileID: 8204105578792671191}
+  <EnemyCharacter>k__BackingField: {fileID: 6859568717669468416}

@@ -18,28 +18,24 @@ namespace AI
 
         public override void Start()
         {
-            //timer avec animation de spawn puis passage au walk
-            Controller.EnemyTransform.localScale = Vector3.zero;
-            Controller.gameObject.transform.DOScale(1, _timer);
-
             _timer = Controller.Data.SpawnTimer;
+            
+            Controller.EnemyTransform.localScale = Vector3.zero;
+            Controller.EnemyTransform.DOScale(Vector3.one, _timer);
 
             if (Controller.EnemyAnimator != null)
             {
                 Controller.EnemyAnimator.SetBool("idleAI", true);
             }
-
-            Controller.SetAIState(AIState.Walk);
         }
 
         public override void Update()
         {
             _timer -= Time.deltaTime;
 
-            if (_timer <= 0)
+            if (_timer < 0)
             {
-                //Controller.SetAIState(AIState.Walk);
-                Debug.Log("timer");
+                Controller.SetAIState(AIState.Walk);
             }
         }
 

@@ -22,7 +22,7 @@ public class AIDetection
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Vector3.Distance(m_transform.position, _player.position) + 1,_layerMask))
+        if (Physics.Raycast(ray, out hit, Vector3.Distance(m_transform.position, _player.position) + 10,_layerMask))
         {
             return true;
         }
