@@ -6,8 +6,7 @@ namespace Data.Bonus
     public class BonusData : ScriptableObject
     {
         public GameObject[] BonusPrefab;
-        public int CollectTimeMinimum;
-        public int CollectTimeMaximum;
+        public float TimeCollect;
         public int LifeGain;
     }
 }

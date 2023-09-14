@@ -10,7 +10,15 @@ public class Heal : MonoBehaviour
 
     private float _timer;
 
-    //void updt
+    private void Start()
+    {
+        _timer = Data.TimeCollect;
+    }
+
+    private void Update()
+    {
+        _timer -= Time.deltaTime;
+    }
 
     private void OnTriggerStay(Collider other)
     {
