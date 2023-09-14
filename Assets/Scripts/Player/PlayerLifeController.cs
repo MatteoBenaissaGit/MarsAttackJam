@@ -15,7 +15,7 @@ namespace Player
 
         public GameObject AttackerObject { get; set; }
 
-        private float _life;
+        public float _life;
         private float _invincibleTime;
 
         private void Awake()

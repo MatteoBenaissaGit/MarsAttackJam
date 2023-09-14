@@ -16,5 +16,3 @@ MonoBehaviour:
   SpawnTimeRate: 100
   SpawnPoints:
   - {x: 10, y: 0, z: 0}
-  - {x: 0, y: 0, z: 10}
-  - {x: 20, y: 0, z: -10}
