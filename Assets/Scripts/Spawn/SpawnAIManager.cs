@@ -11,12 +11,16 @@ namespace Spawn
         [field: SerializeField] public SpawnAIData Data { get; private set; }
     
         [SerializeField] private Transform[] _spawnAIPoints;
+        [SerializeField] private float _spawnTimeRateMinimum;
+        [SerializeField] private float _spawnTimeRateMaximum;
     
         private float _timerSpawn;
         
         private void Start()
         {
             _timerSpawn = Random.Range(Data.SpawnTimeRateMinimum, Data.SpawnTimeRateMaximum);
+            _spawnTimeRateMinimum = Data.SpawnTimeRateMinimum;
+            _spawnTimeRateMaximum = Data.SpawnTimeRateMaximum;
         }
 
         private void Update()
@@ -24,7 +28,11 @@ namespace Spawn
             _timerSpawn -= Time.deltaTime;
             if (_timerSpawn < 0)
             {
-                _timerSpawn = Random.Range(Data.SpawnTimeRateMinimum, Data.SpawnTimeRateMaximum);
+                _timerSpawn = Random.Range(_spawnTimeRateMinimum, _spawnTimeRateMaximum);
+
+                if(_spawnTimeRateMaximum > 2)
+                    _spawnTimeRateMaximum = _spawnTimeRateMaximum / 1.01f;
+
                 SpawnEnemy();
             }
         }
