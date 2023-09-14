@@ -26,7 +26,8 @@ namespace Player
                 return;
             }
             
-            _hips.AddForce(Vector3.up * 300);
+            _hips.AddForce(Vector3.up * 2000);
+            _hips.AddForce(-_hips.gameObject.transform.forward * 2000);
         }
     }
 }
