@@ -1,4 +1,5 @@
 ﻿using Player;
+using UnityEngine;
 
 public class AIStateDeath : AIStateBase
 {
@@ -26,10 +27,26 @@ public class AIStateDeath : AIStateBase
         
         Controller.CharacterMesh.SetActive(false);
         Controller.Ragdoll.SetRagdollActive();
+
+        DropBonus();
     }
 
     public override void End()
     {
         
+    }
+
+    public void DropBonus()
+    {
+        int random = Random.Range(0, Controller.Bonus.BonusPrefab.Length);
+        bool drop = Random.Range(0, 100) < 50;
+
+        if (drop == false)
+        {
+            return;
+        }
+
+        GameObject go = Controller.Bonus.BonusPrefab[random];
+        Controller.DropBonus(go);
     }
 }
