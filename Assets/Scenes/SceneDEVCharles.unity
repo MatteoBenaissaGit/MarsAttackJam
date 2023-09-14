@@ -174,7 +174,7 @@ MonoBehaviour:
   <LifeController>k__BackingField: {fileID: 0}
   <Data>k__BackingField: {fileID: 11400000, guid: b380423140d0fd94ea5c2497c563a358, type: 2}
   <NavMeshAgent>k__BackingField: {fileID: 122774431}
-  cam: {fileID: 0}
+  cam: {fileID: 1497337896}
 --- !u!195 &122774431
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -206,11 +206,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 122774428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00a49c640eeb1ba4d9edae9b34b8bcce, type: 3}
+  m_Script: {fileID: 11500000, guid: 92f1351ab193dc546b4841e357871b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1497337896}
-  agent: {fileID: 122774431}
 --- !u!1 &125455866
 GameObject:
   m_ObjectHideFlags: 0
