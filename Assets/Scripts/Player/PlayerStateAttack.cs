@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Player;
 using UnityEngine;
 
 public class PlayerStateAttack : PlayerStateBase
@@ -44,6 +45,9 @@ public class PlayerStateAttack : PlayerStateBase
         //lock cam
         PlayerController.Instance.FreeLookCamera.m_XAxis.m_MaxSpeed = 0;
         PlayerController.Instance.FreeLookCamera.m_YAxis.m_MaxSpeed = 0;
+        
+        //hurtbox
+        PlayerController.Instance.HurtBoxes.ForEach(x => x.IsActive = true);
     }
 
     public override void End()
@@ -51,5 +55,8 @@ public class PlayerStateAttack : PlayerStateBase
         //unlock cam
         PlayerController.Instance.FreeLookCamera.m_XAxis.m_MaxSpeed = PlayerController.Instance.Data.CameraXSpeed;
         PlayerController.Instance.FreeLookCamera.m_YAxis.m_MaxSpeed = PlayerController.Instance.Data.CameraYSpeed;
+        
+        //hurtbox
+        PlayerController.Instance.HurtBoxes.ForEach(x => x.IsActive = false);
     }
 }

@@ -1,20 +1,34 @@
-﻿public class AIStateIdle : AIStateBase
+﻿namespace AI
 {
-    public override AIState State { get; set; } = AIState.Idle;
-
-
-    public override void Update()
+    public class AIStateIdle : AIStateBase
     {
+        public AIStateIdle(AIController controller)
+        {
+            Controller = controller;
+        }
+
+        public override AIController Controller { get; set; }
+        public override AIState State { get; set; } = AIState.Idle;
+    
+        public override void Update()
+        {
         
-    }
+        }
 
-    public override void Start()
-    {
-        AIController.Instance.childAnimator.SetBool("idle", true);
-    }
+        public override void Start()
+        {
+            if (Controller.ChildAnimator != null)
+            {
+                Controller.ChildAnimator.SetBool("idle", true);
+            }
+        }
 
-    public override void End()
-    {
-        AIController.Instance.childAnimator.SetBool("idle", false);
+        public override void End()
+        {
+            if (Controller.ChildAnimator != null)
+            {
+                Controller.ChildAnimator.SetBool("idle", false);
+            }
+        }
     }
 }

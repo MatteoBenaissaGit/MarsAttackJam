@@ -8,9 +8,16 @@ namespace Player
         public override bool CanBeEnded { get; set; } = false;
         
         private float _raycastDistance = 0.1f;
-
+        private float _timer = 1f;
+        
         public override void Update()
         {
+            _timer += Time.deltaTime;
+            if (_timer > 2)
+            {
+                PlayerController.Instance.SetPlayerState(PlayerState.Idle);
+            }
+            
             if (PlayerController.Instance.Rigidbody.velocity.y > 0)
             {
                 return;

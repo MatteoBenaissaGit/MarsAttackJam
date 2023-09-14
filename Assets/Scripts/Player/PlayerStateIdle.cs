@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Player;
 using UnityEngine;
 
 public class PlayerStateIdle : PlayerStateBase
@@ -13,7 +14,7 @@ public class PlayerStateIdle : PlayerStateBase
 
     public override void FixedUpdate()
     {
-        
+        PlayerController.Instance.Rigidbody.AddForce(Vector3.down * PlayerController.Instance.Data.GravityAfterApexJump);
     }
 
     public override void Start()

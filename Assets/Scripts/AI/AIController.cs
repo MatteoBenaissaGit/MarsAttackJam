@@ -1,32 +1,27 @@
 ﻿using System;
+using AI;
+using Data.Enemy;
 using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
-    #region Singleton
-
-    public static AIController Instance;
-    public Animator childAnimator;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-
-        _currentAIState = new AIStateIdle();
-
-        childAnimator = transform.GetChild(0).GetComponent<Animator>();
-    }
-
-    #endregion
+    
+    [field:SerializeField] public Animator ChildAnimator { get; private set; }
+    [field:SerializeField] public EnemyLifeController LifeController { get; private set; }
+    [field:SerializeField] public EnemyData Data { get; private set; }
 
     private AIStateBase _currentAIState;
+    
+    private void Awake()
+    {
+        ChildAnimator = transform.GetChild(0).GetComponent<Animator>();
+        _currentAIState = new AIStateIdle(this);
+    }
+    
+    private void Start()
+    {
+        LifeController.onDeath += SetDeath;
+    }
     
     private void Update()
     {
@@ -40,6 +35,11 @@ public class AIController : MonoBehaviour
         _currentAIState.Update();
     }
 
+    private void SetDeath()
+    {
+        SetAIState(AIState.Death);
+    }
+    
     private void SetAIState(AIState state)
     {
         if (_currentAIState.State == state)
@@ -52,16 +52,16 @@ public class AIController : MonoBehaviour
         switch (state)
         {
             case AIState.Idle:
-                _currentAIState = new AIStateIdle();
+                _currentAIState = new AIStateIdle(this);
                 break;
             case AIState.Walk:
-                _currentAIState = new AIStateWalk();
+                _currentAIState = new AIStateWalk(this);
                 break;
             case AIState.Attack:
-                _currentAIState = new AIStateAttack();
+                _currentAIState = new AIStateAttack(this);
                 break;
             case AIState.Death:
-                _currentAIState = new AIStateDeath();
+                _currentAIState = new AIStateDeath(this);
                 break;
         }
         
@@ -69,6 +69,10 @@ public class AIController : MonoBehaviour
     }
 
     #endregion
-    
+
+    public void DestroyItself()
+    {
+        Destroy(this.gameObject);
+    }
     
 }

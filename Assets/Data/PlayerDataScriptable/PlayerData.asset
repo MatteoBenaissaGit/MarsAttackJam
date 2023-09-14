@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8750f552f81d45548854cf68c91d1bb8, type: 3}
-  m_Name: Data
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
   Life: 100
   WalkSpeed: 7.5
@@ -21,3 +21,9 @@ MonoBehaviour:
   JumpForce: 300
   GravityAfterApexJump: 5
   VelocityReductionWhenJumpMultiplier: 0.5
+  BaseFOV: 60
+  RunFOV: 80
+  InvincibleTimeAfterHit: 1
+  FullLifeColor: {r: 0.07132578, g: 1, b: 0, a: 1}
+  LowLifeColor: {r: 1, g: 0, b: 0, a: 1}
+  Damage: 10

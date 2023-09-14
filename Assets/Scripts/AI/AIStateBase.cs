@@ -8,6 +8,9 @@
 
 public abstract class AIStateBase
 {
+
+    public abstract AIController Controller { get; set; }
+    
     public abstract AIState State { get; set; }
     
     public abstract void Update();

@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using Player;
 using UnityEngine;
 
 public class PlayerStateWalk : PlayerStateBase
@@ -24,11 +25,13 @@ public class PlayerStateWalk : PlayerStateBase
     public override void Start()
     {
         PlayerController.Instance.Animator.SetBool("Walk",true);
+        PlayerController.Instance.CurrentFOV = PlayerController.Instance.Data.RunFOV;
     }
 
     public override void End()
     {
         PlayerController.Instance.Animator.SetBool("Walk",false);
+        PlayerController.Instance.CurrentFOV = PlayerController.Instance.Data.BaseFOV;
     }
 
     private Vector3 GetMoveDirection()
@@ -54,7 +57,7 @@ public class PlayerStateWalk : PlayerStateBase
 
         Rigidbody rb = PlayerController.Instance.Rigidbody;
         float speed = PlayerController.Instance.Data.WalkSpeed;
-        rb.velocity = moveDirection * speed;
+        rb.velocity = (moveDirection * speed) + new Vector3(0,-PlayerController.Instance.Data.GravityAfterApexJump,0);
     }
     
     private void ManageAnimationMovement()
