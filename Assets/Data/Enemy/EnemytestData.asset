@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemytestData
   m_EditorClassIdentifier: 
   Life: 30
-  WalkSpeed: 10
+  WalkSpeed: 2.5
   AttackRange: 10
   Damage: 10
   InvincibilityTimeAfterHit: 0.5

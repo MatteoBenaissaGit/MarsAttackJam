@@ -15,6 +15,7 @@ public class AIController : MonoBehaviour
     [field:SerializeField] public EnemyData Data { get; private set; }
     [field:SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
     [field:SerializeField] public LayerMask PlayerLayer { get; private set; }
+    [field:SerializeField] public Rigidbody Rigidbody { get; private set; }
     
     public AIDetection Detection { get; private set; }
     public bool SeePlayer { get; private set; } 

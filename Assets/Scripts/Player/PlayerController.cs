@@ -174,7 +174,7 @@ namespace Player
 
         private void SetFOV()
         {
-            float lerpAmount = CurrentFOV > FreeLookCamera.m_Lens.FieldOfView ? 0.1f : 0.01f;
+            float lerpAmount = CurrentFOV > FreeLookCamera.m_Lens.FieldOfView ? 0.01f : 0.005f;
             FreeLookCamera.m_Lens.FieldOfView = Mathf.Lerp(FreeLookCamera.m_Lens.FieldOfView, CurrentFOV, lerpAmount);
         }
     }

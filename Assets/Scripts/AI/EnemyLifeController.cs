@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using DG.Tweening;
 using Player;
 using UnityEngine;
@@ -39,17 +40,33 @@ namespace AI
                 return;
             }
             
+            _life -= damage;
+
             LifeBar.DOFillAmount(_life / AIController.Data.Life,0.2f);
             LifeBar.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
 
-            _life -= damage;
-            Debug.Log(_life);
-            if (_life < 0)
+            if (_life <= 0)
             {
                 onDeath.Invoke();
+                return;
             }
 
             _invicibility = AIController.Data.InvincibilityTimeAfterHit;
+            
+            HitImpactRigidbody();
+        }
+
+        private async void HitImpactRigidbody()
+        {
+            Vector3 direction = PlayerController.Instance.Character.transform.position - AIController.transform.position;
+            AIController.Rigidbody.AddForce(-direction * 100);
+            await StopVelocity(AIController);
+        }
+
+        private static async Task StopVelocity(AIController controller)
+        {
+            await Task.Delay(250);
+            controller.Rigidbody.velocity = Vector3.zero;
         }
         
         public void TakeDamage(IAttacker attacker, float damage)

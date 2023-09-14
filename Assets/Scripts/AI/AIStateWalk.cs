@@ -1,4 +1,6 @@
-﻿public class AIStateWalk : AIStateBase
+﻿using Player;
+
+public class AIStateWalk : AIStateBase
 {
     public AIStateWalk(AIController controller)
     {
@@ -11,9 +13,7 @@
 
     public override void Update()
     {
-        //TODO setup le navmeshagent (Controller.NavMeshAgent) pour se diriger vers le joueur
-
-        //Controller.NavMeshAgent.SetDestination(transform.position);
+        Controller.NavMeshAgent.SetDestination(PlayerController.Instance.Character.transform.position);
     }
 
     public override void Start()
