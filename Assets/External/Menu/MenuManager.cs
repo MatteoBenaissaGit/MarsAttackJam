@@ -130,7 +130,15 @@ namespace MatteoBenaissaLibrary.Menu
             
             //block other animations
             _buttonClicked = true;
-            _buttonManagerList.ForEach(x => x.CanAnimate = false);
+            foreach (ButtonManager button in _buttonManagerList)
+            {
+                if (button == null)
+                {
+                    continue;
+                }
+
+                button.CanAnimate = false;
+            }
             
             //quit
             if (buttonType == (int)ButtonType.Quit)

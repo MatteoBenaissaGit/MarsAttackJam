@@ -19,5 +19,5 @@ MonoBehaviour:
   AttackTime: 1.5
   Damage: 5
   InvincibilityTimeAfterHit: 0.7
-  DistanceToAttack: 8
+  DistanceToAttack: 9
   TimeToAttackAfterDetection: 1

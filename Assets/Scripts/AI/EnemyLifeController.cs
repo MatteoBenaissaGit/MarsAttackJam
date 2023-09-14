@@ -13,6 +13,7 @@ namespace AI
         public Action onDeath;
         
         [field:SerializeField] public Image LifeBar { get; private set; }
+        [field:SerializeField] public Transform LifeBarParent { get; private set; }
         [field:SerializeField] public AIController AIController { get; private set; }
         public float HoldTimeShoot { get; set; }
         public GameObject AttackerObject { get; set; }
@@ -35,7 +36,7 @@ namespace AI
             _invicibility -= Time.deltaTime;
             HoldTimeShoot -= Time.deltaTime;
             
-            LifeBar.transform.LookAt(PlayerController.Instance.Camera.transform);
+            LifeBarParent.transform.LookAt(PlayerController.Instance.Camera.transform);
         }
 
         private void Damage(float damage)

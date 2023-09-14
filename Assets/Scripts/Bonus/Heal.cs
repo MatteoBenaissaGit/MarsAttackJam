@@ -18,6 +18,8 @@ public class Heal : MonoBehaviour
     private void Update()
     {
         _timer -= Time.deltaTime;
+        
+        transform.RotateAround(transform.position,Vector3.up, 1f);
     }
 
     private void OnTriggerStay(Collider other)
