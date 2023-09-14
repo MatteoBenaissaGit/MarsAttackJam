@@ -1,28 +1,29 @@
 ﻿using System;
 using AI;
 using Data.Enemy;
+using Player;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class AIController : MonoBehaviour
 {
     
-    [field:SerializeField] public Animator ChildAnimator { get; private set; }
+    [field:SerializeField] public Animator EnemyAnimator { get; private set; }
     [field:SerializeField] public EnemyLifeController LifeController { get; private set; }
     [field:SerializeField] public EnemyData Data { get; private set; }
     [field:SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
+    [field:SerializeField] public LayerMask PlayerLayer { get; private set; }
     
-    public Camera cam;
+    public AIDetection Detection { get; private set; }
+    public bool SeePlayer { get; private set; } 
 
     private AIStateBase _currentAIState;
     
     private void Awake()
     {
-        ChildAnimator = transform.GetChild(0).GetComponent<Animator>();
-        _currentAIState = new AIStateIdle(this);
-
-        NavMeshAgent = GetComponent<NavMeshAgent>();
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        _currentAIState = new AIStateSpawn(this);
+        _currentAIState.Start();
     }
     
     private void Start()
@@ -30,28 +31,15 @@ public class AIController : MonoBehaviour
         LifeController.onDeath += SetDeath;
 
         NavMeshAgent.speed = Data.WalkSpeed;
+        
+        Detection = new AIDetection(PlayerController.Instance.Character.transform, this.transform, PlayerLayer);
     }
     
     private void Update()
     {
         UpdateCurrentState();
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                SetAIState(AIState.Walk);
-                NavMeshAgent.SetDestination(hit.point);
-            }
-        }
-
-        if(NavMeshAgent.acceleration == 0)
-        {
-            SetAIState(AIState.Idle);
-        }
+        SeePlayer = Detection.SeePlayer();  //Avec cette variable on sait si il voit le joueur -> a utiliser pour attaquer ou non si a distance
     }
 
     #region StateControl
@@ -66,7 +54,7 @@ public class AIController : MonoBehaviour
         SetAIState(AIState.Death);
     }
     
-    private void SetAIState(AIState state)
+    public void SetAIState(AIState state)
     {
         if (_currentAIState.State == state)
         {
@@ -77,8 +65,8 @@ public class AIController : MonoBehaviour
         
         switch (state)
         {
-            case AIState.Idle:
-                _currentAIState = new AIStateIdle(this);
+            case AIState.Spawn:
+                _currentAIState = new AIStateSpawn(this);
                 break;
             case AIState.Walk:
                 _currentAIState = new AIStateWalk(this);

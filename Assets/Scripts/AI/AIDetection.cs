@@ -2,18 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIDetection : MonoBehaviour
+public class AIDetection
 {
-    public Ray ray;
-
-    private void Update()
+    public AIDetection(Transform player, Transform mTransform, LayerMask playerLayer)
     {
-        ray.origin = transform.position;
-        ray.direction = transform.GetChild(0).transform.forward;
+        _player = player;
+        m_transform = mTransform;
+        _layerMask = playerLayer;
     }
 
-    private void OnDrawGizmos()
+    private Transform _player;
+    private Transform m_transform;
+    private LayerMask _layerMask;
+    private Ray _ray;
+
+    public bool SeePlayer()
     {
-        Gizmos.DrawLine(ray.origin, ray.direction);
+        Ray ray = new Ray(m_transform.position, _player.position - m_transform.position);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Vector3.Distance(m_transform.position, _player.position) + 1,_layerMask))
+        {
+            return true;
+        }
+
+        return false;
     }
+
 }

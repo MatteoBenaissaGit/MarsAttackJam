@@ -18,17 +18,17 @@
 
     public override void Start()
     {
-        if (Controller.ChildAnimator != null)
+        if (Controller.EnemyAnimator != null)
         {
-            Controller.ChildAnimator.SetBool("walkAI", true);
+            Controller.EnemyAnimator.SetBool("walkAI", true);
         }
     }
 
     public override void End()
     {
-        if (Controller.ChildAnimator != null)
+        if (Controller.EnemyAnimator != null)
         {
-            Controller.ChildAnimator.SetBool("walkAI", false);
+            Controller.EnemyAnimator.SetBool("walkAI", false);
         }
     }
 }

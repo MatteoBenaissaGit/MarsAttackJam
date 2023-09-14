@@ -10,5 +10,6 @@ namespace Data.Enemy
         public float AttackRange;
         public float Damage;
         public float InvincibilityTimeAfterHit;
+        //temps de spawn
     }
 }

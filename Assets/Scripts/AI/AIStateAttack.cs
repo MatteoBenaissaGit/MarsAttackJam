@@ -15,17 +15,17 @@
 
     public override void Start()
     {
-        if (Controller.ChildAnimator != null)
+        if (Controller.EnemyAnimator != null)
         {
-            Controller.ChildAnimator.SetBool("attackAI", true);
+            Controller.EnemyAnimator.SetBool("attackAI", true);
         }
     }
 
     public override void End()
     {
-        if (Controller.ChildAnimator != null)
+        if (Controller.EnemyAnimator != null)
         {
-            Controller.ChildAnimator.SetBool("attackAI", false);
+            Controller.EnemyAnimator.SetBool("attackAI", false);
         }
     }
 }

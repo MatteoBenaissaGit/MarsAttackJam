@@ -43,6 +43,7 @@ namespace AI
             LifeBar.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
 
             _life -= damage;
+            Debug.Log(_life);
             if (_life < 0)
             {
                 onDeath.Invoke();

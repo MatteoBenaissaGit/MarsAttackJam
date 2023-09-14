@@ -3,10 +3,11 @@ using UnityEngine.AI;
 
 public enum AIState
 {
-    Idle = 0,
-    Walk = 1,
-    Attack = 2,
-    Death = 3
+    None = 0,
+    Spawn = 1,
+    Walk = 2,
+    Attack = 3,
+    Death = 4
 }
 
 public abstract class AIStateBase
