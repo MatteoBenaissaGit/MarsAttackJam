@@ -18,10 +18,14 @@ public class AIStateDeath : AIStateBase
     public override void Start()
     {
         Controller.DeathParticle.Play();
-        Controller.DeathParticle.transform.parent = null;
-        Controller.DestroyItself();
-        
+
+        Controller.Collider.enabled = false;
+        Controller.Rigidbody.isKinematic = true;
+
         PlayerController.Instance.SetKill();
+        
+        Controller.CharacterMesh.SetActive(false);
+        Controller.Ragdoll.SetRagdollActive();
     }
 
     public override void End()

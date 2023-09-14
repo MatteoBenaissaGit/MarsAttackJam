@@ -19,6 +19,7 @@ public class EscapeMenu : MonoBehaviour
             if (_escapeMenu.activeInHierarchy == false)
             {
                 _escapeMenu.SetActive(true);
+                Cursor.visible = _escapeMenu.activeInHierarchy;
                 Time.timeScale = _stopTime ? 0 : 1;
             }
             else
@@ -30,7 +31,7 @@ public class EscapeMenu : MonoBehaviour
 
     public void GoToMenu()
     {
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
     }
 
     public void Resume()

@@ -16,7 +16,7 @@ MonoBehaviour:
   WalkSpeed: 7.5
   AngleToResetRotationInIdle: 72.8
   AttackTime: 0.5
-  CameraYSpeed: 6
+  CameraYSpeed: 8
   CameraXSpeed: 800
   JumpForce: 300
   GravityAfterApexJump: 5

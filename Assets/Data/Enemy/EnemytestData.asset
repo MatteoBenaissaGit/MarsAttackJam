@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f93f1838b24dbdb2dc8b09237c034e, type: 3}
   m_Name: EnemytestData
   m_EditorClassIdentifier: 
-  Life: 30
+  Life: 1
   SpawnTimer: 1
   WalkSpeed: 3
   AttackRange: 6

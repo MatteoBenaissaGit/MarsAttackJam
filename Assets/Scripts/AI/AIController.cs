@@ -17,6 +17,9 @@ public class AIController : MonoBehaviour
     [field:SerializeField] public LineRenderer LineShootRenderer { get; private set; }
     [field:SerializeField] public Transform GunTransform { get; private set; }
     [field:SerializeField] public ParticleSystem DeathParticle { get; private set; }
+    [field:SerializeField] public RagdollManager Ragdoll { get; private set; }
+    [field:SerializeField] public GameObject CharacterMesh { get; private set; }
+    [field:SerializeField] public Collider Collider { get; private set; }
     
     public AIDetection Detection { get; private set; }
     public bool SeePlayer { get; private set; } 
