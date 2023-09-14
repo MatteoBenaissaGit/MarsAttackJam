@@ -20,12 +20,15 @@ public class AIController : MonoBehaviour
     [field:SerializeField] public RagdollManager Ragdoll { get; private set; }
     [field:SerializeField] public GameObject CharacterMesh { get; private set; }
     [field:SerializeField] public Collider Collider { get; private set; }
+    [field:SerializeField] public Data.Bonus.BonusData Bonus { get; private set; }
     
     public AIDetection Detection { get; private set; }
     public bool SeePlayer { get; private set; } 
 
     private AIStateBase _currentAIState;
-    
+
+    private float _timerCollect;
+
     private void Awake()
     {
         _currentAIState = new AIStateSpawn(this);
@@ -93,5 +96,11 @@ public class AIController : MonoBehaviour
     public void DestroyItself()
     {
         Destroy(this.gameObject);
+    }
+
+    public void DropBonus(GameObject bonus)
+    {
+        Instantiate(bonus, CharacterMesh.transform.position, Quaternion.identity);
+        Debug.Log("spawn");
     }
 }

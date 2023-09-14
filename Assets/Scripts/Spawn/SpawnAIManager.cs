@@ -31,6 +31,11 @@ namespace Spawn
 
         private void SpawnEnemy()
         {
+            if (_spawnAIPoints.Length == 0)
+            {
+                return;
+            }
+
             int spawnPoint = Random.Range(0, _spawnAIPoints.Length);
 
             Instantiate(Data.EnemyPrefab, _spawnAIPoints[spawnPoint].position, Quaternion.identity);

@@ -16,5 +16,7 @@ namespace Data.Enemy
         public float InvincibilityTimeAfterHit;
         public float DistanceToAttack;
         public float TimeToAttackAfterDetection;
+
+        public float CollectTimeMinimum { get; internal set; }
     }
 }
