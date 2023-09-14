@@ -47,7 +47,7 @@ public class PlayerStateAttack : PlayerStateBase
         PlayerController.Instance.FreeLookCamera.m_YAxis.m_MaxSpeed = 0;
         
         //hurtbox
-        PlayerController.Instance.HurtBoxes.ForEach(x => x.IsActive = true);
+        PlayerController.Instance.HurtBoxes.ForEach(x => x.Set(true));
     }
 
     public override void End()
@@ -57,6 +57,7 @@ public class PlayerStateAttack : PlayerStateBase
         PlayerController.Instance.FreeLookCamera.m_YAxis.m_MaxSpeed = PlayerController.Instance.Data.CameraYSpeed;
         
         //hurtbox
-        PlayerController.Instance.HurtBoxes.ForEach(x => x.IsActive = false);
+        PlayerController.Instance.HurtBoxes.ForEach(x => x.Set(false));
+
     }
 }

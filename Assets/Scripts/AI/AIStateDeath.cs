@@ -15,6 +15,8 @@
 
     public override void Start()
     {
+        Controller.DeathParticle.Play();
+        Controller.DeathParticle.transform.parent = null;
         Controller.DestroyItself();
     }
 

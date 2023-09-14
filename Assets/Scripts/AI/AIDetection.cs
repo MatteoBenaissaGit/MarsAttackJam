@@ -34,4 +34,30 @@ public class AIDetection
         return false;
     }
 
+    public IAttackable AttackableInRay(Vector3 position)
+    {
+        Ray ray = new Ray(_controller.GunTransform.position, position - _controller.GunTransform.position);
+
+        RaycastHit hit; 
+
+        if (Physics.Raycast(ray, out hit, 10000))
+        {
+            IAttackable attackable = null;
+            attackable = hit.collider.gameObject.GetComponent<IAttackable>(); //CHECK FOR PLAYER
+            if (attackable == null)
+            {
+                attackable = hit.collider.gameObject.GetComponentInParent<IAttackable>(); //CHECK FOR PLAYER
+            }
+
+            if (attackable == null) 
+            {
+                return null;
+            }
+            
+            return attackable;
+        }
+
+        return null;
+    }
+
 }

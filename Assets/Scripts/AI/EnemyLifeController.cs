@@ -14,6 +14,7 @@ namespace AI
         
         [field:SerializeField] public Image LifeBar { get; private set; }
         [field:SerializeField] public AIController AIController { get; private set; }
+        public GameObject AttackerObject { get; set; }
 
         private float _life;
         private float _invicibility;
@@ -24,6 +25,8 @@ namespace AI
             
             _life = AIController.Data.Life;
             LifeBar.DOFillAmount(_life / AIController.Data.Life,0.2f);
+
+            AttackerObject = gameObject;
         }
 
         private void Update()
@@ -73,5 +76,6 @@ namespace AI
         {
             onDamage.Invoke(damage);
         }
+
     }
 }

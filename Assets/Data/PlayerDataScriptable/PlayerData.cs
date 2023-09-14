@@ -20,10 +20,12 @@ namespace Data.PlayerDataScriptable
         [Space(10)] 
         public float BaseFOV;
         public float RunFOV;
+        public float DeathFOV;
         [Space(10)] 
         public float InvincibleTimeAfterHit;
         public Color FullLifeColor;
         public Color LowLifeColor;
         public int Damage;
+        public Transform DeathCameraParent;
     }
 }

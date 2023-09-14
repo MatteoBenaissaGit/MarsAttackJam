@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,8 @@ namespace Player
         public Action<float> onDamage;
         public Action onDeath;
 
+        public GameObject AttackerObject { get; set; }
+
         private float _life;
         private float _invincibleTime;
 
@@ -19,6 +22,12 @@ namespace Player
         {
             onDamage += Damage;
             LifeBar.fillAmount = 1;
+            AttackerObject = gameObject;
+        }
+
+        private void Start()
+        {
+            _life = PlayerController.Instance.Data.Life;
         }
 
         private void Update()
@@ -36,16 +45,23 @@ namespace Player
             onDamage.Invoke(damage);
         }
 
+
         private void Damage(float damage)
         {
+            if (_invincibleTime > 0)
+            {
+                return;
+            }
+            
             _invincibleTime = PlayerController.Instance.Data.InvincibleTimeAfterHit;
+
+            _life -= damage;
             
             LifeBar.DOFillAmount(_life / PlayerController.Instance.Data.Life,0.2f);
             LifeBar.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
             LifeBar.DOColor(Color.Lerp(PlayerController.Instance.Data.LowLifeColor, PlayerController.Instance.Data.FullLifeColor, LifeBar.fillAmount), 0.2f);
 
-            _life -= damage;
-            if (_life < 0)
+            if (_life <= 0)
             {
                 onDeath.Invoke();
             }

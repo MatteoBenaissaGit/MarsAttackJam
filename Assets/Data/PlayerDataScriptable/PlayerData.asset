@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8750f552f81d45548854cf68c91d1bb8, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  Life: 100
+  Life: 50
   WalkSpeed: 7.5
   AngleToResetRotationInIdle: 72.8
   AttackTime: 0.5
@@ -23,7 +23,9 @@ MonoBehaviour:
   VelocityReductionWhenJumpMultiplier: 0.5
   BaseFOV: 60
   RunFOV: 80
+  DeathFOV: 100
   InvincibleTimeAfterHit: 1
   FullLifeColor: {r: 0.07132578, g: 1, b: 0, a: 1}
   LowLifeColor: {r: 1, g: 0, b: 0, a: 1}
   Damage: 10
+  DeathCameraParent: {fileID: 0}

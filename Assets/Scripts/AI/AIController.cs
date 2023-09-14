@@ -16,6 +16,7 @@ public class AIController : MonoBehaviour
     [field:SerializeField] public Rigidbody Rigidbody { get; private set; }
     [field:SerializeField] public LineRenderer LineShootRenderer { get; private set; }
     [field:SerializeField] public Transform GunTransform { get; private set; }
+    [field:SerializeField] public ParticleSystem DeathParticle { get; private set; }
     
     public AIDetection Detection { get; private set; }
     public bool SeePlayer { get; private set; } 

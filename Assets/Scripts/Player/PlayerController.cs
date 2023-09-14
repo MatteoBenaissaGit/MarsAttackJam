@@ -38,6 +38,8 @@ namespace Player
         [field:SerializeField] public PlayerLifeController LifeController { get; private set; }
         [field:SerializeField] public List<PlayerHurtBoxController> HurtBoxes { get; private set; }
         [field:SerializeField] public Transform RaycastTarget { get; private set; }
+        [field:SerializeField] public Transform CameraTarget { get; private set; }
+        [field:SerializeField] public RagdollManager Ragdoll { get; private set; }
         public Vector2 MoveInput { get; private set; }
         public float CurrentFOV { get; set; }
     

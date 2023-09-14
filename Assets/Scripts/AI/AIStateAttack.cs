@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using DG.Tweening;
+using Player;
 using UnityEngine;
 
 public class AIStateAttack : AIStateBase
@@ -15,16 +16,35 @@ public class AIStateAttack : AIStateBase
     private float _attackLaunchTimer;
 
     private Vector3 _playerPosition;
+    private bool _attackLaunched;
 
     public override void Update()
     {
         _attackTimer -= Time.deltaTime;
         _attackLaunchTimer -= Time.deltaTime;
 
-        if (_attackLaunchTimer <= 0)
+        if (_attackLaunchTimer <= 0 && _attackLaunched == false)
         {
-            Controller.LineShootRenderer.SetPosition(0,Controller.GunTransform.position);
-            Controller.LineShootRenderer.SetPosition(1,PlayerController.Instance.RaycastTarget.position);
+            _playerPosition = new Vector3(_playerPosition.x, _playerPosition.y, _playerPosition.z);
+            
+            Controller.LineShootRenderer.useWorldSpace = true;
+
+            Vector3 gun = Controller.GunTransform.position;
+            Controller.LineShootRenderer.SetPosition(0,gun);
+            Vector3 direction = (_playerPosition - gun).normalized;
+            float currentDistance = Vector3.Distance(gun, _playerPosition);
+            Vector3 newEndPoint = gun + direction * (currentDistance * 2);
+            Controller.LineShootRenderer.SetPosition(1,newEndPoint);
+
+            _attackLaunched = true;
+        }
+
+        if (_attackLaunched)
+        {
+            if (Controller.Detection.AttackableInRay(_playerPosition) != null)
+            {
+                Controller.Detection.AttackableInRay(_playerPosition).TakeDamage(Controller.GetComponent<IAttacker>(), Controller.Data.Damage);
+            }
         }
 
         if (_attackTimer <= 0)
@@ -33,6 +53,8 @@ public class AIStateAttack : AIStateBase
             Controller.LineShootRenderer.SetPosition(1,Vector3.zero);
             Controller.SetAIState(AIState.Walk);
         }
+        
+        Controller.Rigidbody.velocity = Vector3.Lerp(Controller.Rigidbody.velocity, Vector3.zero, 0.01f);
     }
 
     public override void Start()
@@ -48,6 +70,12 @@ public class AIStateAttack : AIStateBase
         _attackTimer = Controller.Data.AttackTime;
 
         _playerPosition = PlayerController.Instance.RaycastTarget.position;
+        
+        //rotate
+        Vector3 lookAtPosition = new Vector3(_playerPosition.x, Controller.EnemyTransform.transform.position.y, _playerPosition.z);
+        Vector3 direction = lookAtPosition - Controller.EnemyTransform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        Controller.EnemyTransform.DORotateQuaternion(targetRotation, 0.25f);
     }
 
     public override void End()
@@ -56,5 +84,12 @@ public class AIStateAttack : AIStateBase
         {
             Controller.EnemyAnimator.SetBool("attackAI", false);
         }
+
+        _attackLaunched = false;
+    }
+
+    public void GiveDamage(IAttackable attackable)
+    {
+        
     }
 }
