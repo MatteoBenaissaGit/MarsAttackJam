@@ -408,4 +408,4 @@ MonoBehaviour:
   <NavMeshAgent>k__BackingField: {fileID: 0}
   <PlayerLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
