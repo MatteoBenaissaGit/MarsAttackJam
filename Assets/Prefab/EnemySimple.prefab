@@ -4041,6 +4041,7 @@ MonoBehaviour:
   <Ragdoll>k__BackingField: {fileID: 2671508941864994084}
   <CharacterMesh>k__BackingField: {fileID: 3926598634768762386}
   <Collider>k__BackingField: {fileID: 7871055064075603157}
+  <Bonus>k__BackingField: {fileID: 11400000, guid: e19496c2f5996b24d855747104e2f8cc, type: 2}
 --- !u!114 &6227757420932554412
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,8 +26,10 @@ public class AIStateDeath : AIStateBase
         PlayerController.Instance.SetKill();
         
         Controller.CharacterMesh.SetActive(false);
-        Controller.Ragdoll.SetRagdollActive();
+        Controller.Ragdoll.SetRagdollActive(new []{true});
 
+        Controller.LineShootRenderer.enabled = false;
+        
         DropBonus();
     }
 
