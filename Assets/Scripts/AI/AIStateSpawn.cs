@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 namespace AI
 {
@@ -11,16 +12,20 @@ namespace AI
 
         public override AIController Controller { get; set; }
         public override AIState State { get; set; } = AIState.Spawn;
-        
-        //timer
+
+        public int timer;
     
         public override void Update()
         {
             //timer avec animation de spawn puis passage au walk
+
+            Controller.gameObject.transform.DOScale(1, timer);
         }
 
         public override void Start()
         {
+            timer = Controller.Data.timer;
+
             if (Controller.EnemyAnimator != null)
             {
                 Controller.EnemyAnimator.SetBool("idleAI", true);

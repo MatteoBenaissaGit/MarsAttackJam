@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 public class AIController : MonoBehaviour
 {
     
+    [field:SerializeField] public Renderer EnemyRenderer { get; private set; }
     [field:SerializeField] public Animator EnemyAnimator { get; private set; }
     [field:SerializeField] public EnemyLifeController LifeController { get; private set; }
     [field:SerializeField] public EnemyData Data { get; private set; }

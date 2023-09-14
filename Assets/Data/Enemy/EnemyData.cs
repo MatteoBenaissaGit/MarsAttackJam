@@ -6,10 +6,10 @@ namespace Data.Enemy
     public class EnemyData : ScriptableObject
     {
         public int Life;
+        public int timer;
         public float WalkSpeed;
         public float AttackRange;
         public float Damage;
         public float InvincibilityTimeAfterHit;
-        //temps de spawn
     }
 }
