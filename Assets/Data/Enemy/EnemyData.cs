@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Data.Enemy
 {
@@ -6,9 +7,11 @@ namespace Data.Enemy
     public class EnemyData : ScriptableObject
     {
         public int Life;
-        public int timer;
+        public int SpawnTimer;
         public float WalkSpeed;
+        [Space(10)]
         public float AttackRange;
+        public float AttackTime;
         public float Damage;
         public float InvincibilityTimeAfterHit;
         public float DistanceToAttack;
