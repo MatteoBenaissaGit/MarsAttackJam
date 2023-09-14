@@ -13,17 +13,18 @@ public class AIStateWalk : AIStateBase
 
     public override void Update()
     {
-        Controller.NavMeshAgent.SetDestination(PlayerController.Instance.Character.transform.position);
+        Vector3 playerPosition = PlayerController.Instance.Character.transform.position;
+        Controller.NavMeshAgent.SetDestination(playerPosition);
 
-        float distance = Vector3.Distance(Controller.transform.position, PlayerController.Instance.Character.transform.position;
-        //Debug.Log($"see {Controller.SeePlayer}");
-        Debug.Log($"distance {distance}");
+        float distance = Vector3.Distance(Controller.EnemyTransform.position, playerPosition);
+        Debug.Log($"see {Controller.SeePlayer}");
         
-        if (Controller.SeePlayer
-            && Vector3.Distance(Controller.transform.position, PlayerController.Instance.Character.transform.position) < Controller.Data.DistanceToAttack)
+        if (Controller.SeePlayer && distance < Controller.Data.DistanceToAttack)
         {
             Controller.SetAIState(AIState.Attack);
         }
+        
+        Controller.Rigidbody.velocity = Vector3.Lerp(Controller.Rigidbody.velocity, Vector3.zero, 0.1f);
     }
 
     public override void Start()

@@ -35,14 +35,14 @@ public class AIController : MonoBehaviour
 
         NavMeshAgent.speed = Data.WalkSpeed;
         
-        Detection = new AIDetection(PlayerController.Instance.Character.transform, EnemyTransform, PlayerLayer);
+        Detection = new AIDetection(PlayerController.Instance.Character.transform, this, PlayerLayer);
     }
     
     private void Update()
     {
         UpdateCurrentState();
 
-        SeePlayer = Detection.SeePlayer();  //Avec cette variable on sait si il voit le joueur -> a utiliser pour attaquer ou non si a distance
+        SeePlayer = Detection.SeePlayer();
     }
 
     #region StateControl

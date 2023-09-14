@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class AIDetection
 {
-    public AIDetection(Transform player, Transform mTransform, LayerMask playerLayer)
+    public AIDetection(Transform player, AIController controller, LayerMask playerLayer)
     {
         _player = player;
-        m_transform = mTransform;
+        _controller = controller;
         _layerMask = playerLayer;
     }
 
     private Transform _player;
-    private Transform m_transform;
+    private AIController _controller;
     private LayerMask _layerMask;
     private Ray _ray;
 
     public bool SeePlayer()
     {
-        Ray ray = new Ray(m_transform.position, _player.position - m_transform.position);
+        Ray ray = new Ray(_controller.EnemyTransform.position, _player.position - _controller.EnemyTransform.position);
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Vector3.Distance(m_transform.position, _player.position) + 10,_layerMask))
+        if (Physics.Raycast(ray, out hit, 10000,_layerMask))
         {
             return true;
         }
