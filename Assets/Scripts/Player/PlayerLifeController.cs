@@ -73,10 +73,10 @@ namespace Player
 
         public void Heal(int gain)
         {
-            if (_life < PlayerController.Instance.Data.Life)
-                _life += gain;
+            if (Life < PlayerController.Instance.Data.Life)
+                Life += gain;
             else
-                _life = PlayerController.Instance.Data.Life;
+                Life = PlayerController.Instance.Data.Life;
         }
     }
 }
