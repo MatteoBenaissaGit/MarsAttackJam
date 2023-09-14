@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 3244190188285175568}
   - component: {fileID: 9074789384486544343}
   - component: {fileID: 6468089667498745730}
+  - component: {fileID: 3899967868695009644}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -301,6 +302,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <LifeBar>k__BackingField: {fileID: 7906013181878892726}
   <AIController>k__BackingField: {fileID: 5160917623911871719}
+--- !u!195 &3899967868695009644
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272377645764673829}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.62
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6996152637941623666
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,3 +373,4 @@ MonoBehaviour:
   <ChildAnimator>k__BackingField: {fileID: 0}
   <LifeController>k__BackingField: {fileID: 6468089667498745730}
   <Data>k__BackingField: {fileID: 11400000, guid: b380423140d0fd94ea5c2497c563a358, type: 2}
+  <NavMeshAgent>k__BackingField: {fileID: 3899967868695009644}

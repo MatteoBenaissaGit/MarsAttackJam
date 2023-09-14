@@ -11,7 +11,7 @@
 
     public override void Update()
     {
-        
+        //TODO setup le navmeshagent (Controller.NavMeshAgent) pour se diriger vers le joueur
     }
 
     public override void Start()

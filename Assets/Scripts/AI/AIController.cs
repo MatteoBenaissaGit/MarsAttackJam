@@ -2,6 +2,7 @@
 using AI;
 using Data.Enemy;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class AIController : MonoBehaviour
     [field:SerializeField] public Animator ChildAnimator { get; private set; }
     [field:SerializeField] public EnemyLifeController LifeController { get; private set; }
     [field:SerializeField] public EnemyData Data { get; private set; }
+    [field:SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
 
     private AIStateBase _currentAIState;
     
@@ -21,6 +23,8 @@ public class AIController : MonoBehaviour
     private void Start()
     {
         LifeController.onDeath += SetDeath;
+
+        NavMeshAgent.speed = Data.WalkSpeed;
     }
     
     private void Update()
