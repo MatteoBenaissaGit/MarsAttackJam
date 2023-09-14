@@ -8,15 +8,14 @@ using UnityEngine.Serialization;
 
 public class AIController : MonoBehaviour
 {
-    
-    [field:SerializeField] public Renderer EnemyRenderer { get; private set; }
     [field:SerializeField] public Transform EnemyTransform { get; private set; }
     [field:SerializeField] public Animator EnemyAnimator { get; private set; }
     [field:SerializeField] public EnemyLifeController LifeController { get; private set; }
     [field:SerializeField] public EnemyData Data { get; private set; }
     [field:SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
-    [field:SerializeField] public LayerMask PlayerLayer { get; private set; }
     [field:SerializeField] public Rigidbody Rigidbody { get; private set; }
+    [field:SerializeField] public LineRenderer LineShootRenderer { get; private set; }
+    [field:SerializeField] public Transform GunTransform { get; private set; }
     
     public AIDetection Detection { get; private set; }
     public bool SeePlayer { get; private set; } 

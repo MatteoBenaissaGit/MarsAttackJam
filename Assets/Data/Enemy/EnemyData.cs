@@ -15,5 +15,6 @@ namespace Data.Enemy
         public float Damage;
         public float InvincibilityTimeAfterHit;
         public float DistanceToAttack;
+        public float TimeToAttackAfterDetection;
     }
 }

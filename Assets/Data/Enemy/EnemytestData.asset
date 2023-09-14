@@ -16,7 +16,8 @@ MonoBehaviour:
   SpawnTimer: 1
   WalkSpeed: 2.5
   AttackRange: 6
-  AttackTime: 1
+  AttackTime: 1.5
   Damage: 10
   InvincibilityTimeAfterHit: 0.5
   DistanceToAttack: 10
+  TimeToAttackAfterDetection: 1
