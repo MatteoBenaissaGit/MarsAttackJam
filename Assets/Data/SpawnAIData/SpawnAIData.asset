@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43dfae96c9b2f094d8875f0cd166f840, type: 3}
+  m_Name: SpawnAIData
+  m_EditorClassIdentifier: 
+  Ennemy: {fileID: 6996152637941623666, guid: 4d10fcd5bdf35284181a8a6b65057e39, type: 3}
+  SpawnTimeRate: 100
+  SpawnPoints:
+  - {x: 10, y: 0, z: 0}
+  - {x: 0, y: 0, z: 10}
+  - {x: 20, y: 0, z: -10}
