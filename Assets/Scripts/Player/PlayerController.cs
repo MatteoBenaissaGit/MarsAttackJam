@@ -37,6 +37,7 @@ namespace Player
         [field:SerializeField] public CinemachineFreeLook FreeLookCamera { get; private set; }
         [field:SerializeField] public PlayerLifeController LifeController { get; private set; }
         [field:SerializeField] public List<PlayerHurtBoxController> HurtBoxes { get; private set; }
+        [field:SerializeField] public Transform RaycastTarget { get; private set; }
         public Vector2 MoveInput { get; private set; }
         public float CurrentFOV { get; set; }
     

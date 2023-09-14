@@ -15,8 +15,8 @@ MonoBehaviour:
   Life: 30
   SpawnTimer: 1
   WalkSpeed: 2.5
-  AttackRange: 10
-  AttackTime: 0
+  AttackRange: 6
+  AttackTime: 1
   Damage: 10
   InvincibilityTimeAfterHit: 0.5
-  DistanceToAttack: 0
+  DistanceToAttack: 10

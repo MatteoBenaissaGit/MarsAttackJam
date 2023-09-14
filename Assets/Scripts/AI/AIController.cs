@@ -35,7 +35,7 @@ public class AIController : MonoBehaviour
 
         NavMeshAgent.speed = Data.WalkSpeed;
         
-        Detection = new AIDetection(PlayerController.Instance.Character.transform, this, PlayerLayer);
+        Detection = new AIDetection(PlayerController.Instance.RaycastTarget, this);
     }
     
     private void Update()
@@ -91,5 +91,4 @@ public class AIController : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-    
 }

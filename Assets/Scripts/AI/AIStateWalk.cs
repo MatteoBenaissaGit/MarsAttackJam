@@ -17,18 +17,19 @@ public class AIStateWalk : AIStateBase
         Controller.NavMeshAgent.SetDestination(playerPosition);
 
         float distance = Vector3.Distance(Controller.EnemyTransform.position, playerPosition);
-        Debug.Log($"see {Controller.SeePlayer}");
         
         if (Controller.SeePlayer && distance < Controller.Data.DistanceToAttack)
         {
             Controller.SetAIState(AIState.Attack);
         }
         
-        Controller.Rigidbody.velocity = Vector3.Lerp(Controller.Rigidbody.velocity, Vector3.zero, 0.1f);
+        Controller.Rigidbody.velocity = Vector3.Lerp(Controller.Rigidbody.velocity, Vector3.zero, 0.01f);
     }
 
     public override void Start()
     {
+        Controller.NavMeshAgent.isStopped = false;
+        
         if (Controller.EnemyAnimator != null)
         {
             Controller.EnemyAnimator.SetBool("walkAI", true);

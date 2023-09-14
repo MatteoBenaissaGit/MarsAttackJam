@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class AIDetection
 {
-    public AIDetection(Transform player, AIController controller, LayerMask playerLayer)
+    public AIDetection(Transform player, AIController controller)
     {
         _player = player;
         _controller = controller;
-        _layerMask = playerLayer;
     }
 
     private Transform _player;
     private AIController _controller;
-    private LayerMask _layerMask;
+    private int _playerLayer = 6;
     private Ray _ray;
 
     public bool SeePlayer()
@@ -22,8 +21,13 @@ public class AIDetection
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 10000,_layerMask))
+        if (Physics.Raycast(ray, out hit, 10000))
         {
+            if (hit.collider.gameObject.layer != _playerLayer)
+            {
+                return false;
+            }
+            
             return true;
         }
 
