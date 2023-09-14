@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: EnemytestData
   m_EditorClassIdentifier: 
   Life: 30
+  SpawnTimer: 100
   WalkSpeed: 2.5
   AttackRange: 10
+  AttackTime: 0
   Damage: 10
   InvincibilityTimeAfterHit: 0.5
+  DistanceToAttack: 0
