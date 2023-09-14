@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cinemachine;
 using Data.PlayerDataScriptable;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,11 +41,14 @@ namespace Player
         [field:SerializeField] public Transform RaycastTarget { get; private set; }
         [field:SerializeField] public Transform CameraTarget { get; private set; }
         [field:SerializeField] public RagdollManager Ragdoll { get; private set; }
+        [field:SerializeField] public TMP_Text KillCountText { get; private set; }
         public Vector2 MoveInput { get; private set; }
         public float CurrentFOV { get; set; }
     
         private PlayerStateBase _currentPlayerState;
         private CharacterInput _characterInputAction;
+
+        private int _killCount;
 
         private void Start()
         {
@@ -56,6 +60,8 @@ namespace Player
             CurrentFOV = Instance.Data.BaseFOV;
 
             LifeController.onDeath += SetDeath;
+
+            KillCountText.text = "0";
         }
 
         private void Update()
@@ -179,6 +185,12 @@ namespace Player
         {
             float lerpAmount = CurrentFOV > FreeLookCamera.m_Lens.FieldOfView ? 0.01f : 0.005f;
             FreeLookCamera.m_Lens.FieldOfView = Mathf.Lerp(FreeLookCamera.m_Lens.FieldOfView, CurrentFOV, lerpAmount);
+        }
+
+        public void SetKill()
+        {
+            _killCount++;
+            KillCountText.text = _killCount.ToString();
         }
     }
 }

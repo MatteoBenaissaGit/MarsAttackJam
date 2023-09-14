@@ -26,6 +26,6 @@ MonoBehaviour:
   DeathFOV: 100
   InvincibleTimeAfterHit: 1
   FullLifeColor: {r: 0.07132578, g: 1, b: 0, a: 1}
-  LowLifeColor: {r: 1, g: 0, b: 0, a: 1}
+  LowLifeColor: {r: 0.012975574, g: 0.5, b: 0, a: 1}
   Damage: 10
   DeathCameraParent: {fileID: 0}

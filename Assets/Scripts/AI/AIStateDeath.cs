@@ -1,4 +1,6 @@
-﻿public class AIStateDeath : AIStateBase
+﻿using Player;
+
+public class AIStateDeath : AIStateBase
 {
     public AIStateDeath(AIController controller)
     {
@@ -18,6 +20,8 @@
         Controller.DeathParticle.Play();
         Controller.DeathParticle.transform.parent = null;
         Controller.DestroyItself();
+        
+        PlayerController.Instance.SetKill();
     }
 
     public override void End()

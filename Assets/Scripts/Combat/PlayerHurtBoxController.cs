@@ -15,7 +15,7 @@ namespace Player
         public void Set(bool active)
         {
             Attacked.Clear();
-            IsActive = true;
+            IsActive = active;
         }        
         
         private void OnTriggerStay(Collider other)
@@ -33,7 +33,6 @@ namespace Player
             if (attackable != null
                 && Attacked.Contains(attackable) == false)
             {
-                Debug.Log(other.transform.name);
                 GiveDamage(attackable);
                 Attacked.Add(attackable);
             }

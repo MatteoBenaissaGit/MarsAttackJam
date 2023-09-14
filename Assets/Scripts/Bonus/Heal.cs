@@ -14,10 +14,10 @@ public class Heal : MonoBehaviour
 
         if (script != null)
         {
-            if (_playerLife._life < PlayerController.Instance.Data.Life)
-                _playerLife._life += _lifeGain;
+            if (_playerLife.Life < PlayerController.Instance.Data.Life)
+                _playerLife.Life += _lifeGain;
             else
-                _playerLife._life = PlayerController.Instance.Data.Life;
+                _playerLife.Life = PlayerController.Instance.Data.Life;
         }
     }
 }

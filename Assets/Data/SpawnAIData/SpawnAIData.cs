@@ -6,8 +6,8 @@ namespace Data.Enemy
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SpawnAIData", order = 1)]
     public class SpawnAIData : ScriptableObject
     {
-        public GameObject Ennemy;
-        public int SpawnTimeRate;
-        public Vector3[] SpawnPoints;
+        public AIController EnemyPrefab;
+        public int SpawnTimeRateMinimum;
+        public int SpawnTimeRateMaximum;
     }
 }

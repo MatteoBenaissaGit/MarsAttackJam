@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Player
@@ -9,13 +10,14 @@ namespace Player
     public class PlayerLifeController : MonoBehaviour, IAttackable
     {
         [field: SerializeField] public Image LifeBar;
+        [field: SerializeField] public ParticleSystem HitParticle;
         
         public Action<float> onDamage;
         public Action onDeath;
 
         public GameObject AttackerObject { get; set; }
 
-        public float _life;
+        [HideInInspector] public float Life;
         private float _invincibleTime;
 
         private void Awake()
@@ -27,7 +29,7 @@ namespace Player
 
         private void Start()
         {
-            _life = PlayerController.Instance.Data.Life;
+            Life = PlayerController.Instance.Data.Life;
         }
 
         private void Update()
@@ -55,13 +57,15 @@ namespace Player
             
             _invincibleTime = PlayerController.Instance.Data.InvincibleTimeAfterHit;
 
-            _life -= damage;
+            Life -= damage;
             
-            LifeBar.DOFillAmount(_life / PlayerController.Instance.Data.Life,0.2f);
+            HitParticle.Play();
+            
+            LifeBar.DOFillAmount(Life / PlayerController.Instance.Data.Life,0.2f);
             LifeBar.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
             LifeBar.DOColor(Color.Lerp(PlayerController.Instance.Data.LowLifeColor, PlayerController.Instance.Data.FullLifeColor, LifeBar.fillAmount), 0.2f);
 
-            if (_life <= 0)
+            if (Life <= 0)
             {
                 onDeath.Invoke();
             }
