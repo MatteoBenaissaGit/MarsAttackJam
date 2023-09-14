@@ -30,7 +30,7 @@ namespace Spawn
             {
                 _timerSpawn = Random.Range(_spawnTimeRateMinimum, _spawnTimeRateMaximum);
 
-                if(_spawnTimeRateMaximum > 2)
+                if(_spawnTimeRateMaximum > _spawnTimeRateMinimum)
                     _spawnTimeRateMaximum = _spawnTimeRateMaximum / 1.01f;
 
                 SpawnEnemy();
