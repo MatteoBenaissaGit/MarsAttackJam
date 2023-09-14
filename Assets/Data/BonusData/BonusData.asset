@@ -15,4 +15,4 @@ MonoBehaviour:
   BonusPrefab:
   - {fileID: 8857499326177602843, guid: f276ce237370cef4b83ae7b84b8581cd, type: 3}
   TimeCollect: 1
-  LifeGain: 20
+  LifeGain: 10

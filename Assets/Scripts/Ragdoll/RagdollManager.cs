@@ -9,15 +9,37 @@ namespace Player
         [SerializeField] private GameObject _ragdoll;
         [SerializeField] private List<RagdollLimb> _limbs;
         [SerializeField] private Rigidbody _hips;
+        [SerializeField] private float _timeBeforeDeactivatingPhysic;
+
+        private float _timer = 1;
+        private bool _isActive;
 
         private void Awake()
         {
             _ragdoll.SetActive(false);
         }
 
+        private void Update()
+        {
+            if (_isActive == false)
+            {
+                return;
+            }
+
+            _timer -= Time.deltaTime;
+
+            if (_timer < 0)
+            {
+                _isActive = false;
+                _limbs.ForEach(x => x.GetComponent<Rigidbody>().isKinematic = true);
+            }
+        }
+
         public void SetRagdollActive(params bool[] addForce)
         {
             _ragdoll.SetActive(true);
+            _isActive = true;
+            _timer = _timeBeforeDeactivatingPhysic;
             
             _limbs.ForEach(x => x.SetLimb());
 

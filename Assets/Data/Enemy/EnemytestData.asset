@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f93f1838b24dbdb2dc8b09237c034e, type: 3}
   m_Name: EnemytestData
   m_EditorClassIdentifier: 
-  Life: 1
+  Life: 20
   SpawnTimer: 1
   WalkSpeed: 3
   AttackRange: 6
   AttackTime: 1.5
   Damage: 5
-  InvincibilityTimeAfterHit: 0.8
-  DistanceToAttack: 10
+  InvincibilityTimeAfterHit: 0.7
+  DistanceToAttack: 8
   TimeToAttackAfterDetection: 1

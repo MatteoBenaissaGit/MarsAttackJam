@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cinemachine;
 using Data.PlayerDataScriptable;
+using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,6 +43,7 @@ namespace Player
         [field:SerializeField] public Transform CameraTarget { get; private set; }
         [field:SerializeField] public RagdollManager Ragdoll { get; private set; }
         [field:SerializeField] public TMP_Text KillCountText { get; private set; }
+        [field:SerializeField] public HitStopEffect HitStopEffectController { get; private set; }
         public Vector2 MoveInput { get; private set; }
         public float CurrentFOV { get; set; }
     
