@@ -31,6 +31,8 @@ public class AIStateDeath : AIStateBase
         Controller.LineShootRenderer.enabled = false;
         
         DropBonus();
+        
+        Controller.LifeController.LifeBarParent.gameObject.SetActive(false);
     }
 
     public override void End()

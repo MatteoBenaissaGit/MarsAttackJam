@@ -29,7 +29,6 @@ namespace Player
                 return;
             }
 
-            Debug.Log("timer");
             _timer -= Time.deltaTime;
         }
 
