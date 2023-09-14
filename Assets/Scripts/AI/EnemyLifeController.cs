@@ -53,6 +53,8 @@ namespace AI
 
             HoldTimeShoot = 2f;
             
+            PlayerController.Instance.HitStopEffectController.StartHitStop();
+            
             if (_life <= 0)
             {
                 onDeath.Invoke();
@@ -63,6 +65,7 @@ namespace AI
             AIController.SetAIState(AIState.Walk);
             
             HitImpactRigidbody();
+            
         }
 
         private async void HitImpactRigidbody()

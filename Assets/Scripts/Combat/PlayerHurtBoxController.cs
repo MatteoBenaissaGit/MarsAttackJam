@@ -54,11 +54,6 @@ namespace Player
 
         public void GiveDamage(IAttackable attackable)
         {
-            if (attackable != PlayerController.Instance.LifeController)
-            {
-                PlayerController.Instance.HitStopEffectController.StartHitStop();
-            }
-            
             attackable.TakeDamage(this, PlayerController.Instance.Data.Damage);
             ParticleHit.Play();
         }

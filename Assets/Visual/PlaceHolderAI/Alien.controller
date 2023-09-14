@@ -224,7 +224,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Character
+  m_Name: Alien
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: idleAI
@@ -370,7 +370,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 79e277428857e9142990a449a16f6352, type: 2}
+  m_Motion: {fileID: 7400000, guid: 674f9188444db894abdbcd95520bc4a2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -399,7 +399,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 00b135048c6ebd147b47b6d11becea73, type: 2}
+  m_Motion: {fileID: 7400000, guid: 004b7eaebb18d944f996bc47bfa6e45a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -427,7 +427,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a864bc2d45408f04ea2590a6afc3251a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7657239ddf441b440bbf48a57e36005d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
