@@ -24,7 +24,7 @@ namespace AI
 
         public override void Start()
         {
-            timer = Controller.Data.timer;
+            timer = Controller.Data.SpawnTimer;
 
             if (Controller.EnemyAnimator != null)
             {
