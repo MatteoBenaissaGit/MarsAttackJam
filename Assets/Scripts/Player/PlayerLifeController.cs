@@ -66,5 +66,13 @@ namespace Player
                 onDeath.Invoke();
             }
         }
+
+        public void Heal(int gain)
+        {
+            if (_life < PlayerController.Instance.Data.Life)
+                _life += gain;
+            else
+                _life = PlayerController.Instance.Data.Life;
+        }
     }
 }
