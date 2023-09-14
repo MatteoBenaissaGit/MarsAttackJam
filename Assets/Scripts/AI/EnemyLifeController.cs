@@ -76,6 +76,5 @@ namespace AI
         {
             onDamage.Invoke(damage);
         }
-
     }
 }

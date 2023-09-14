@@ -1,39 +1,39 @@
-using Data.Enemy;
+using System;
 using System.Collections;
-using System.Collections.Generic;
+using Data.Enemy;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class SpawnAIManager : MonoBehaviour
+namespace Spawn
 {
-    [field: SerializeField] public SpawnAIData Data { get; private set; }
-    public float SpawnAITimeRate;
-    public int PointSpawn;
-    public Vector3[] SpawnAIPoints;
-
-    private void Start()
+    public class SpawnAIManager : MonoBehaviour
     {
-        SpawnAITimeRate = Data.SpawnTimeRate;
-        PointSpawn = 0;
-        SpawnAIPoints = Data.SpawnPoints;
-
-        StartCoroutine(WaitForTime(SpawnAITimeRate));
-    }
-
-    public IEnumerator WaitForTime(float time)
-    {
-        yield return new WaitForSeconds(time * Time.deltaTime);
-
-        if (PointSpawn < SpawnAIPoints.Length)
+        [field: SerializeField] public SpawnAIData Data { get; private set; }
+    
+        [SerializeField] private Transform[] _spawnAIPoints;
+    
+        private float _timerSpawn;
+        
+        private void Start()
         {
-            Instantiate(Data.Ennemy, SpawnAIPoints[PointSpawn], Quaternion.identity);
-            PointSpawn++;
-        }
-        else
-        {
-            PointSpawn = 0;
-            Instantiate(Data.Ennemy, SpawnAIPoints[PointSpawn], Quaternion.identity);
+            _timerSpawn = Random.Range(Data.SpawnTimeRateMinimum, Data.SpawnTimeRateMaximum);
         }
 
-        StartCoroutine(WaitForTime(SpawnAITimeRate));
+        private void Update()
+        {
+            _timerSpawn -= Time.deltaTime;
+            if (_timerSpawn < 0)
+            {
+                _timerSpawn = Random.Range(Data.SpawnTimeRateMinimum, Data.SpawnTimeRateMaximum);
+                SpawnEnemy();
+            }
+        }
+
+        private void SpawnEnemy()
+        {
+            int spawnPoint = Random.Range(0, _spawnAIPoints.Length);
+
+            Instantiate(Data.EnemyPrefab, _spawnAIPoints[spawnPoint].position, Quaternion.identity);
+        }
     }
 }
