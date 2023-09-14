@@ -101,6 +101,5 @@ public class AIController : MonoBehaviour
     public void DropBonus(GameObject bonus)
     {
         Instantiate(bonus, CharacterMesh.transform.position, Quaternion.identity);
-        Debug.Log("spawn");
     }
 }

@@ -61,9 +61,7 @@ namespace Player
             
             HitParticle.Play();
             
-            LifeBar.DOFillAmount(Life / PlayerController.Instance.Data.Life,0.2f);
-            LifeBar.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
-            LifeBar.DOColor(Color.Lerp(PlayerController.Instance.Data.LowLifeColor, PlayerController.Instance.Data.FullLifeColor, LifeBar.fillAmount), 0.2f);
+            SetLifeBar();
 
             if (Life <= 0)
             {
@@ -71,12 +69,27 @@ namespace Player
             }
         }
 
+        private void SetLifeBar()
+        {
+            LifeBar.DOFillAmount(Life / PlayerController.Instance.Data.Life, 0.2f);
+            LifeBar.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
+            LifeBar.DOColor(
+                Color.Lerp(PlayerController.Instance.Data.LowLifeColor, PlayerController.Instance.Data.FullLifeColor,
+                    LifeBar.fillAmount), 0.2f);
+        }
+
         public void Heal(int gain)
         {
             if (Life < PlayerController.Instance.Data.Life)
+            {
                 Life += gain;
+            }
             else
+            {
                 Life = PlayerController.Instance.Data.Life;
+            }
+            
+            SetLifeBar();
         }
     }
 }

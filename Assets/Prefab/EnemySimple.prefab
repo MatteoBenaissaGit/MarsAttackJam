@@ -4082,6 +4082,7 @@ MonoBehaviour:
   - {fileID: 4351133173087774192}
   - {fileID: 888812885628891011}
   _hips: {fileID: 2596127375498117435}
+  _timeBeforeDeactivatingPhysic: 30
 --- !u!1 &7073449009785215703
 GameObject:
   m_ObjectHideFlags: 0
