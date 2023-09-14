@@ -32,7 +32,7 @@ namespace Player
 
         public override void FixedUpdate()
         {
-            
+            ManageMovement();
         }
 
         public override void Start()
@@ -47,5 +47,19 @@ namespace Player
             PlayerController.Instance.Animator.SetBool("Jump", false);
         }
 
+        private void ManageMovement()
+        {
+            Vector3 moveDirection = PlayerStateWalk.GetMoveDirection();
+
+            if (moveDirection.magnitude > 1)
+            {
+                moveDirection.Normalize();
+            }
+
+            Rigidbody rb = PlayerController.Instance.Rigidbody;
+            float speed = PlayerController.Instance.Data.WalkSpeed;
+            Vector3 velocity = (moveDirection * speed * 0.5f);
+            rb.velocity = new Vector3(velocity.x,rb.velocity.y,velocity.z);
+        }
     }
 }

@@ -20,6 +20,12 @@ public class AIStateAttack : AIStateBase
 
     public override void Update()
     {
+        if (Controller.LifeController.HoldTimeShoot > 0)
+        {
+            Controller.SetAIState(AIState.Walk);
+            return;
+        }
+        
         _attackTimer -= Time.deltaTime;
         _attackLaunchTimer -= Time.deltaTime;
 

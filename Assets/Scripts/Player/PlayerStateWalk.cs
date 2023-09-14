@@ -34,7 +34,7 @@ public class PlayerStateWalk : PlayerStateBase
         PlayerController.Instance.CurrentFOV = PlayerController.Instance.Data.BaseFOV;
     }
 
-    private Vector3 GetMoveDirection()
+    public static Vector3 GetMoveDirection()
     {
         Vector3 cameraForward = PlayerController.Instance.Camera.transform.forward;
         cameraForward.y = 0f;

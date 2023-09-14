@@ -14,6 +14,7 @@ namespace AI
         
         [field:SerializeField] public Image LifeBar { get; private set; }
         [field:SerializeField] public AIController AIController { get; private set; }
+        public float HoldTimeShoot { get; set; }
         public GameObject AttackerObject { get; set; }
 
         private float _life;
@@ -32,6 +33,7 @@ namespace AI
         private void Update()
         {
             _invicibility -= Time.deltaTime;
+            HoldTimeShoot -= Time.deltaTime;
             
             LifeBar.transform.LookAt(PlayerController.Instance.Camera.transform);
         }
@@ -48,6 +50,8 @@ namespace AI
             LifeBar.DOFillAmount(_life / AIController.Data.Life,0.2f);
             LifeBar.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
 
+            HoldTimeShoot = 2f;
+            
             if (_life <= 0)
             {
                 onDeath.Invoke();
@@ -55,6 +59,7 @@ namespace AI
             }
 
             _invicibility = AIController.Data.InvincibilityTimeAfterHit;
+            AIController.SetAIState(AIState.Walk);
             
             HitImpactRigidbody();
         }
