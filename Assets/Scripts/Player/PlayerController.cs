@@ -46,7 +46,11 @@ namespace Player
         [field:SerializeField] public HitStopEffect HitStopEffectController { get; private set; }
         public Vector2 MoveInput { get; private set; }
         public float CurrentFOV { get; set; }
-    
+
+        public float _timerBoost;
+        public int Boost;
+
+
         private PlayerStateBase _currentPlayerState;
         private CharacterInput _characterInputAction;
 

@@ -8,5 +8,7 @@ namespace Data.Bonus
         public GameObject[] BonusPrefab;
         public float TimeCollect;
         public int LifeGain;
+        public float timeSpeedBoost;
+        public int intencitySpeedBoost;
     }
 }
