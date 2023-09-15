@@ -48,6 +48,7 @@ namespace Player
         [field:SerializeField] public TMP_Text KillCountText { get; private set; }
         [field:SerializeField] public HitStopEffect HitStopEffectController { get; private set; }
         [field:SerializeField] public TrailRenderer SpeedBoostTrail { get; private set; }
+        [field:SerializeField] public PlayerSound PlayerSound { get; private set; }
         public Vector2 MoveInput { get; private set; }
         public float CurrentFOV { get; set; }
         public float TimerBoost { get; set; }
@@ -142,8 +143,9 @@ namespace Player
                 || _currentPlayerState.CanBeEnded == false)
             {
                 return;
-            }        
-        
+            }
+
+            PlayerSound.PunchSoundEffect();
             SetPlayerState(PlayerState.Attack);
         }
 
@@ -154,6 +156,7 @@ namespace Player
             {
                 SetPlayerState(PlayerState.Walk);
             }
+            PlayerSound.WalkSoundEffect(true);
         }
     
         public void SetMovement(InputAction.CallbackContext context)
@@ -164,6 +167,7 @@ namespace Player
                 && _currentPlayerState.State == PlayerState.Walk
                 && _currentPlayerState.CanBeEnded)
             {
+                PlayerSound.WalkSoundEffect(false);
                 SetPlayerState(PlayerState.Idle);
                 return;
             }
@@ -173,7 +177,7 @@ namespace Player
             {
                 return;
             }
-        
+
             SetPlayerState(PlayerState.Walk);
         }
 
