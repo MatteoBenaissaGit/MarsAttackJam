@@ -14,9 +14,7 @@ namespace Player
         
         public Action<float> onDamage;
         public Action onDeath;
-
-        public GameObject AttackerObject { get; set; }
-
+        
         [HideInInspector] public float Life;
         private float _invincibleTime;
 
@@ -24,7 +22,6 @@ namespace Player
         {
             onDamage += Damage;
             LifeBar.fillAmount = 1;
-            AttackerObject = gameObject;
         }
 
         private void Start()
@@ -37,7 +34,7 @@ namespace Player
             _invincibleTime -= Time.deltaTime;
         }
 
-        public void TakeDamage(IAttacker attacker, float damage)
+        public void TakeDamage(GameObject attacker, float damage)
         {
             if (_invincibleTime > 0)
             {

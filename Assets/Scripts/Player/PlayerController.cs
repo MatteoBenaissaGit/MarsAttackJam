@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using Cinemachine;
+using Data.Bonus;
 using Data.PlayerDataScriptable;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -36,6 +38,7 @@ namespace Player
         [field:SerializeField] public GameObject Character { get; private set; }
         [field:SerializeField] public Animator Animator { get; private set; }
         [field:SerializeField] public PlayerData Data { get; private set; }
+        [field:SerializeField] public BonusData BonusDatas { get; private set; }
         [field:SerializeField] public CinemachineFreeLook FreeLookCamera { get; private set; }
         [field:SerializeField] public PlayerLifeController LifeController { get; private set; }
         [field:SerializeField] public List<PlayerHurtBoxController> HurtBoxes { get; private set; }
@@ -44,12 +47,10 @@ namespace Player
         [field:SerializeField] public RagdollManager Ragdoll { get; private set; }
         [field:SerializeField] public TMP_Text KillCountText { get; private set; }
         [field:SerializeField] public HitStopEffect HitStopEffectController { get; private set; }
+        [field:SerializeField] public TrailRenderer SpeedBoostTrail { get; private set; }
         public Vector2 MoveInput { get; private set; }
         public float CurrentFOV { get; set; }
-
-        public float _timerBoost;
-        public int Boost;
-
+        public float TimerBoost { get; set; }
 
         private PlayerStateBase _currentPlayerState;
         private CharacterInput _characterInputAction;
@@ -74,6 +75,7 @@ namespace Player
         {
             UpdateCurrentState();
             SetFOV();
+            ManageSpeedBoost();
         }
 
         private void FixedUpdate()
@@ -197,6 +199,12 @@ namespace Player
         {
             _killCount++;
             KillCountText.text = _killCount.ToString();
+        }
+
+        private void ManageSpeedBoost()
+        {
+            TimerBoost -= Time.deltaTime;
+            SpeedBoostTrail.gameObject.SetActive(TimerBoost > 0);
         }
     }
 }

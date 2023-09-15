@@ -9,11 +9,17 @@ namespace Player
     {
         [field:SerializeField] public ParticleSystem ParticleHit { get; private set; }
         [SerializeField] private float _timeBeforeActivation;
-        
+        public GameObject AttackerObject { get; set; }
+
         public bool IsActive { get; set; }
 
         private List<IAttackable> Attacked = new List<IAttackable>();
         private float _timer;
+
+        private void Start()
+        {
+            AttackerObject = PlayerController.Instance.transform.gameObject;
+        }
 
         public void Set(bool active)
         {
@@ -54,7 +60,7 @@ namespace Player
 
         public void GiveDamage(IAttackable attackable)
         {
-            attackable.TakeDamage(this, PlayerController.Instance.Data.Damage);
+            attackable.TakeDamage(AttackerObject, PlayerController.Instance.Data.Damage);
             ParticleHit.Play();
         }
     }

@@ -81,7 +81,7 @@ namespace AI
             controller.Rigidbody.velocity = Vector3.zero;
         }
         
-        public void TakeDamage(IAttacker attacker, float damage)
+        public void TakeDamage(GameObject attacker, float damage)
         {
             onDamage.Invoke(damage);
         }

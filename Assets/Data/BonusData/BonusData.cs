@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Data.Bonus
 {
@@ -8,7 +9,7 @@ namespace Data.Bonus
         public GameObject[] BonusPrefab;
         public float TimeCollect;
         public int LifeGain;
-        public float timeSpeedBoost;
-        public int intencitySpeedBoost;
+        public float TimeSpeedBoost;
+        public float SpeedBoostMultiplier;
     }
 }

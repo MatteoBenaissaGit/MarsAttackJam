@@ -32,6 +32,7 @@ namespace Player
             {
                 _isActive = false;
                 _limbs.ForEach(x => x.GetComponent<Rigidbody>().isKinematic = true);
+                _limbs.ForEach(x => Destroy(x.GetComponent<Collider>()));
             }
         }
 
@@ -48,8 +49,10 @@ namespace Player
                 return;
             }
             
+            Vector3 direction = transform.position - PlayerController.Instance.transform.position;
+            direction.Normalize();
             _hips.AddForce(Vector3.up * 2000);
-            _hips.AddForce(-_hips.gameObject.transform.forward * 2000);
+            _hips.AddForce(direction * 3000);
         }
     }
 }
