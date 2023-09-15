@@ -1,42 +1,27 @@
-using Data.Bonus;
 using Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedBoost : MonoBehaviour
+namespace Bonus
 {
-    [field: SerializeField] public BonusData Data { get; private set; }
-
-    private float _timer;
-
-    private void Start()
+    public class SpeedBoost : BonusObject
     {
-        _timer = Data.TimeCollect;
-    }
-
-    private void Update()
-    {
-        _timer -= Time.deltaTime;
+        protected override void OnTriggerStay(Collider other)
+        {
+            base.OnTriggerStay(other);
         
-        transform.RotateAround(transform.position,Vector3.up, 1f);
-    }
+            if (CollectableTimer > 0)
+            {
+                return;
+            }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (_timer > 0)
-        {
-            return;
-        }
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
-        var script = other.gameObject.GetComponent<PlayerController>();
-       
 
-        if (script != null)
-        {
-            script.Boost = Data.intencitySpeedBoost;
-            script._timerBoost = Data.timeSpeedBoost;
-            Destroy(this.gameObject);
+            if (player != null)
+            {
+                player.TimerBoost = Data.TimeSpeedBoost;
+                Destroy(this.gameObject);
+            }
         }
     }
 }

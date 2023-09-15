@@ -10,22 +10,13 @@ public class PlayerStateWalk : PlayerStateBase
 
     private Vector3 _movementVector;
     private WalkDirection _walkDirectionCurrent;
-    [SerializeField] public int Boost;
-    [SerializeField] public float _timer;
+    private float _boostAmount;
 
     
     public override void Update()
     {
         ManageAnimationMovement();
         ManageRotation();
-
-        if (_timer > 0)
-        {
-            _timer -= Time.deltaTime;
-
-            Boost = PlayerController.Instance.Boost;
-            _timer = PlayerController.Instance._timerBoost;
-        }
     }
 
     public override void FixedUpdate()
@@ -66,14 +57,10 @@ public class PlayerStateWalk : PlayerStateBase
             moveDirection.Normalize();
         }
 
-        if (_timer <= 0)
-        {
-            Boost = 1;
-        }
+        _boostAmount = PlayerController.Instance.TimerBoost <= 0 ? 1 : PlayerController.Instance.BonusDatas.SpeedBoostMultiplier;
 
         Rigidbody rb = PlayerController.Instance.Rigidbody;
-        float speed = PlayerController.Instance.Data.WalkSpeed * Boost;
-        Debug.Log(Boost);
+        float speed = PlayerController.Instance.Data.WalkSpeed * _boostAmount;
         rb.velocity = (moveDirection * speed) + new Vector3(0,-PlayerController.Instance.Data.GravityAfterApexJump,0);
     }
     

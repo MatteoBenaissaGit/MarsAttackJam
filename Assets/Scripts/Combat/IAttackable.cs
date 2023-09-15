@@ -2,6 +2,5 @@ using UnityEngine;
 
 public interface IAttackable
 {
-    public void TakeDamage(IAttacker attacker, float damage);
-    public GameObject AttackerObject { get; set; }
+    public void TakeDamage(GameObject attacker, float damage);
 }

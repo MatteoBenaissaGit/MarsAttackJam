@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BonusPrefab:
   - {fileID: 8857499326177602843, guid: f276ce237370cef4b83ae7b84b8581cd, type: 3}
+  - {fileID: 8857499326177602843, guid: ba4421c81b8e60048852b0b05beac793, type: 3}
   TimeCollect: 1
   LifeGain: 10
-  timeSpeedBoost: 10
-  intencitySpeedBoost: 2
+  TimeSpeedBoost: 5
+  SpeedBoostMultiplier: 1.5
