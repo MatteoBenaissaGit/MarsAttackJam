@@ -28,6 +28,11 @@ public class PlayerStateDeath : PlayerStateBase
         //lock cam
         PlayerController.Instance.FreeLookCamera.m_XAxis.m_MaxSpeed = 0;
         PlayerController.Instance.FreeLookCamera.m_YAxis.m_MaxSpeed = 0;
+        
+        //game over
+        PlayerController.Instance.GameOverAnimator.SetTrigger("GameOver");
+        PlayerController.Instance.GameOverAnimator.gameObject.SetActive(true);
+        Cursor.visible = true;
     }
 
     public override void End()
