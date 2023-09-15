@@ -62,6 +62,8 @@ public class PlayerStateWalk : PlayerStateBase
         Rigidbody rb = PlayerController.Instance.Rigidbody;
         float speed = PlayerController.Instance.Data.WalkSpeed * _boostAmount;
         rb.velocity = (moveDirection * speed) + new Vector3(0,-PlayerController.Instance.Data.GravityAfterApexJump,0);
+
+        PlayerController.Instance.PlayerSound.WalkSoundEffect(true);
     }
     
     private void ManageAnimationMovement()

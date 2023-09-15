@@ -40,7 +40,8 @@ namespace Player
             {
                 return;
             }
-            
+
+            PlayerController.Instance.PlayerSound.HitSoundEffect();
             onDamage.Invoke(damage);
         }
 
