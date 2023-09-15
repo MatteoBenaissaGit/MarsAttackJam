@@ -43,6 +43,7 @@ public class AIStateAttack : AIStateBase
             Controller.LineShootRenderer.SetPosition(1,newEndPoint);
 
             _attackLaunched = true;
+            Controller.AISound.ShootSoundEffect();
         }
 
         if (_attackLaunched)

@@ -63,7 +63,7 @@ namespace AI
 
             _invicibility = AIController.Data.InvincibilityTimeAfterHit;
             AIController.SetAIState(AIState.Walk);
-            
+
             HitImpactRigidbody();
             
         }
@@ -84,6 +84,7 @@ namespace AI
         public void TakeDamage(GameObject attacker, float damage)
         {
             onDamage.Invoke(damage);
+            AIController.AISound.HitSoundEffect();
         }
     }
 }
