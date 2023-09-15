@@ -29,6 +29,7 @@ namespace Player
 
             _currentPlayerState = new PlayerStateIdle();
             Cursor.visible = false;
+            GameOverAnimator.gameObject.SetActive(false);
         }
 
         #endregion
@@ -48,6 +49,7 @@ namespace Player
         [field:SerializeField] public TMP_Text KillCountText { get; private set; }
         [field:SerializeField] public HitStopEffect HitStopEffectController { get; private set; }
         [field:SerializeField] public TrailRenderer SpeedBoostTrail { get; private set; }
+        [field:SerializeField] public Animator GameOverAnimator { get; private set; }
         public Vector2 MoveInput { get; private set; }
         public float CurrentFOV { get; set; }
         public float TimerBoost { get; set; }
