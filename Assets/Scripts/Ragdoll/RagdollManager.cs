@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Player
 {
@@ -33,6 +34,7 @@ namespace Player
                 _isActive = false;
                 _limbs.ForEach(x => x.GetComponent<Rigidbody>().isKinematic = true);
                 _limbs.ForEach(x => Destroy(x.GetComponent<Collider>()));
+                _limbs.ForEach(x => x.transform.gameObject.isStatic = true);
             }
         }
 
@@ -51,8 +53,8 @@ namespace Player
             
             Vector3 direction = transform.position - PlayerController.Instance.transform.position;
             direction.Normalize();
-            _hips.AddForce(Vector3.up * 2000);
-            _hips.AddForce(direction * 3000);
+            _hips.AddForce(Vector3.up * Random.Range(1500,3000));
+            _hips.AddForce(direction * Random.Range(1500,3000));
         }
     }
 }
