@@ -32,6 +32,7 @@ public class PlayerStateDeath : PlayerStateBase
         //game over
         PlayerController.Instance.GameOverAnimator.SetTrigger("GameOver");
         PlayerController.Instance.GameOverAnimator.gameObject.SetActive(true);
+        Cursor.visible = true;
     }
 
     public override void End()
