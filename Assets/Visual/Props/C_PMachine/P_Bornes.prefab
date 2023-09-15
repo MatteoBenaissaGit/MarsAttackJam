@@ -214,6 +214,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: C_PMachine_002
       objectReference: {fileID: 0}
+    - target: {fileID: 3839564535382101218, guid: 3110407448484d145a0bd15d5ebeb7c7, type: 3}
+      propertyPath: m_Size.x
+      value: 0.00955657
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839564535382101218, guid: 3110407448484d145a0bd15d5ebeb7c7, type: 3}
+      propertyPath: m_Center.x
+      value: 0.00022566765
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839564535382101218, guid: 3110407448484d145a0bd15d5ebeb7c7, type: 3}
+      propertyPath: m_Center.y
+      value: -2.0252955e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839564535382101218, guid: 3110407448484d145a0bd15d5ebeb7c7, type: 3}
+      propertyPath: m_Center.z
+      value: 0.01377007
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

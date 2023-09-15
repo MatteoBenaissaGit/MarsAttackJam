@@ -10,6 +10,11 @@ namespace DefaultNamespace.Physic
         
         public void TakeDamage(GameObject attacker, float damage)
         {
+            if (Rigidbody == null)
+            {
+                return;
+            }
+            
             Vector3 direction = transform.position - attacker.transform.position;
             direction.Normalize();
             Rigidbody.AddForce((direction * Force) + Vector3.up * UpForce);
