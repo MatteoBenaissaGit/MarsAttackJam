@@ -29,10 +29,6 @@ namespace Spawn
             if (_timerSpawn < 0)
             {
                 _timerSpawn = Random.Range(_spawnTimeRateMinimum, _spawnTimeRateMaximum);
-
-                if(_spawnTimeRateMaximum > _spawnTimeRateMinimum)
-                    _spawnTimeRateMaximum = _spawnTimeRateMaximum / 1.01f;
-
                 SpawnEnemy();
             }
         }
@@ -44,6 +40,7 @@ namespace Spawn
                 return;
             }
 
+            Debug.Log("spawn");
             int spawnPoint = Random.Range(0, _spawnAIPoints.Length);
 
             Instantiate(Data.EnemyPrefab, _spawnAIPoints[spawnPoint].position, Quaternion.identity);
