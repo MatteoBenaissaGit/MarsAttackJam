@@ -9,7 +9,7 @@ public class PlayerSound : MonoBehaviour
     public AudioClip[] PunchAudioClip;
     public AudioClip[] HitAudioClip;
     public AudioClip[] WalkAudioClip;
-    public float _timer;
+    private float _timer;
 
     private void Start()
     {
