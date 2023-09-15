@@ -163,6 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51156799b7e4a0fac70483c25434290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Rigidbody>k__BackingField: {fileID: 0}
+  <Rigidbody>k__BackingField: {fileID: 6853432164193398391}
   <Force>k__BackingField: 200
   <UpForce>k__BackingField: 100

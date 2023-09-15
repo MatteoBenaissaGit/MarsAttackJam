@@ -165,6 +165,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3d1996069e5e8044a0fe40d4dfc63c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5223732734639036868}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3d1996069e5e8044a0fe40d4dfc63c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 974022052382496283}
   m_SourcePrefab: {fileID: 100100000, guid: e3d1996069e5e8044a0fe40d4dfc63c1, type: 3}
 --- !u!1 &6091325285456967063 stripped
 GameObject:
@@ -219,6 +222,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0036987227, y: 0.0036987227, z: 0.008886526}
   m_Center: {x: 0, y: 0, z: 0.00089613406}
+--- !u!114 &974022052382496283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6091325285456967063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51156799b7e4a0fac70483c25434290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Rigidbody>k__BackingField: {fileID: 1079435550282709149}
+  <Force>k__BackingField: 100
+  <UpForce>k__BackingField: 100
 --- !u!4 &6900478619268951853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3d1996069e5e8044a0fe40d4dfc63c1, type: 3}
