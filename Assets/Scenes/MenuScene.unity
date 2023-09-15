@@ -1042,8 +1042,8 @@ MonoBehaviour:
     PlayButton: {fileID: 0}
     CreditsButton: {fileID: 0}
     QuitButton: {fileID: 0}
-  PlaySceneName: DevSceneMatt
-  CreditSceneName: CreditScene
+  PlaySceneName: SceneDevMatt
+  CreditSceneName: SceneCredit
   _makeButtonAnimation: 1
   _launchSceneTimeInSeconds: 0.5
   _buttonAnimationTimeInSeconds: 1
