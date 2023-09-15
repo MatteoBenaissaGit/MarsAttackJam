@@ -21,6 +21,7 @@ public class AIController : MonoBehaviour
     [field:SerializeField] public GameObject CharacterMesh { get; private set; }
     [field:SerializeField] public Collider Collider { get; private set; }
     [field:SerializeField] public Data.Bonus.BonusData Bonus { get; private set; }
+    [field:SerializeField] public AISound AISound { get; private set; }
     
     public AIDetection Detection { get; private set; }
     public bool SeePlayer { get; private set; } 
