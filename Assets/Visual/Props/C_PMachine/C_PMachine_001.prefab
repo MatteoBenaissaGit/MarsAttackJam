@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5323145731740828071}
   - component: {fileID: 3290798477569386300}
   - component: {fileID: 8813047692127036898}
+  - component: {fileID: 7059631737058239238}
+  - component: {fileID: -916001821468835661}
   m_Layer: 0
   m_Name: C_PMachine_001
   m_TagString: Untagged
@@ -109,3 +111,45 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.005675445, y: 0.009200449, z: 0.016512042}
   m_Center: {x: -0.000016733538, y: -0.0000050435765, z: 0.008238123}
+--- !u!114 &7059631737058239238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167350977803532052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51156799b7e4a0fac70483c25434290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Rigidbody>k__BackingField: {fileID: -916001821468835661}
+  <Force>k__BackingField: 300
+  <UpForce>k__BackingField: 150
+--- !u!54 &-916001821468835661
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167350977803532052}
+  serializedVersion: 4
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

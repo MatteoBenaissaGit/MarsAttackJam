@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2852679293069444281}
   - component: {fileID: 7140295634160237325}
   - component: {fileID: 6704441751288631811}
+  - component: {fileID: 9196902010680630280}
   m_Layer: 0
   m_Name: C_Chaise_001
   m_TagString: Untagged
@@ -134,3 +135,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.004567815, y: 0.0039767614, z: 0.009020927}
   m_Center: {x: -0.00023678539, y: -2.6616068e-10, z: 0.004465435}
+--- !u!114 &9196902010680630280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093555276035348021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51156799b7e4a0fac70483c25434290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Rigidbody>k__BackingField: {fileID: 0}
+  <Force>k__BackingField: 200
+  <UpForce>k__BackingField: 100

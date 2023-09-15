@@ -49,7 +49,7 @@ public class AIStateAttack : AIStateBase
         {
             if (Controller.Detection.AttackableInRay(_playerPosition) != null)
             {
-                Controller.Detection.AttackableInRay(_playerPosition).TakeDamage(Controller.GetComponent<IAttacker>(), Controller.Data.Damage);
+                Controller.Detection.AttackableInRay(_playerPosition).TakeDamage(Controller.transform.gameObject, Controller.Data.Damage);
             }
         }
 

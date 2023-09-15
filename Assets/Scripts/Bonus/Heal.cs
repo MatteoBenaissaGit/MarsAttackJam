@@ -1,40 +1,26 @@
-using Data.Bonus;
 using Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Heal : MonoBehaviour
+namespace Bonus
 {
-    [field: SerializeField] public BonusData Data { get; private set; }
-
-    private float _timer;
-
-    private void Start()
+    public class Heal : BonusObject
     {
-        _timer = Data.TimeCollect;
-    }
-
-    private void Update()
-    {
-        _timer -= Time.deltaTime;
+        protected override void OnTriggerStay(Collider other)
+        {
+            base.OnTriggerStay(other);
         
-        transform.RotateAround(transform.position,Vector3.up, 1f);
-    }
+            if (CollectableTimer > 0)
+            {
+                return;
+            }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (_timer > 0)
-        {
-            return;
-        }
+            var script = other.gameObject.GetComponent<PlayerLifeController>();
 
-        var script = other.gameObject.GetComponent<PlayerLifeController>();
-
-        if (script != null)
-        {
-            script.Heal(Data.LifeGain);
-            Destroy(this.gameObject);
+            if (script != null)
+            {
+                script.Heal(Data.LifeGain);
+                Destroy(this.gameObject);
+            }
         }
     }
 }

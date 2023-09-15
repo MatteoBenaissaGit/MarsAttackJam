@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3252808472019486360}
   - component: {fileID: 3766165288176266234}
   - component: {fileID: 3839564535382101218}
+  - component: {fileID: 8254606804170242577}
+  - component: {fileID: -3720432045228814778}
   m_Layer: 0
   m_Name: C_PMachine_002
   m_TagString: Untagged
@@ -112,3 +114,45 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.010675, y: 0.007923467, z: 0.027635507}
   m_Center: {x: 0.00030598813, y: 0, z: 0.013770072}
+--- !u!54 &8254606804170242577
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3032717049607412431}
+  serializedVersion: 4
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-3720432045228814778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3032717049607412431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51156799b7e4a0fac70483c25434290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Rigidbody>k__BackingField: {fileID: 8254606804170242577}
+  <Force>k__BackingField: 500
+  <UpForce>k__BackingField: 200
